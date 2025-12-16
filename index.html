@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        /* CSS styles remain the same as the previous example */
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <!-- Links now point to actual page files -->
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+    <h1> Module 00: Welcome to Models of Computing</h1>
+
+            <h2>Introduction</h2>
+
+            <p>CPSC 121 explores formal modeling systems that help us understand and explore the capabilities of computers and, more generally, any problem solving process. Our exploration of these systems will be guided by the desire to answer the following questions:</p>
+
+            <ol>
+                <li>
+                    <p>How can we convince ourselves that an algorithm performs as expected? When is one algorithm better than another?</p>
+                </li>
+                <li>
+                    <p>How does the computer decide if the characters of your program represent a name, a number, or something else? How do computers know when we have mismatched quotations or parentheses?</p>
+                </li>
+                <li>
+                    <p>As of 2021, processors have 60 billion transistors. How do these transistors work together to execute a user-defined program?</p>
+                </li>
+                <li>
+                    <p>Modern computation is founded on the happy coincidence that silicon and other semi-conductors and metals in special configurations execute a logical operation. How do we get from little logical operations to high-level programs like those you write in CPSC 110?</p>
+                </li>
+                <li>
+                    <p>What can computational systems do, and not do? The capabilities of computers, combinational circuits, finite state machines, and other formal systems (the human brain?) are constrained by the way they are defined. What kinds of problems can they solve, what kinds of problems are they incapable of solving, and how can we provably delineate those capabilities? What are the strengths of our formal models of real systems, and where do those models break down?</p>
+                </li>
+            </ol>
+
+            <p>CPSC 121 will take you on a journey to discover how 0s and 1s come together to form a circuit and how circuits can then unite to form a simplified version of a full computer. You will learn how to:</p>
+
+            <ul>
+                <li>Construct and recognize valid proofs in a variety of forms</li>
+                <li>Express yourself logically and precisely in the manner of a computer</li>
+                <li>Demonstrate your models by using a magic box to create working circuits</li>
+            </ul>
+
+        <hr />
+
+        <h2>Expected Prior Mathematical Knowledge</h2>
+
+            <p>During this course, we will not be programming, so no prior programming language knowledge is expected. When needed, we will try our best to use examples that reference Racket and Python but we will not be programming in this course.</p>
+
+            <p>Some math knowledge will be expected. In this section, we will review some mathematical concepts that will be used throughout the course. If these concepts are unfamiliar to you, please take the time to review them now.</p>
+
+            <h3>Divisibility of Integers</h3>
+
+            <p>The division <em>m/n</em>, also described as <em>m</em> &divide; <em>n</em> is the inverse of multiplication. When considering  only integers, we have that by dividing <em>m</em> by <em>n</em> we have <em>m=nq+r</em> where <em>q</em> is called the quotient and <em>r</em> is called the remainder.</p>
+
+            <p>A number <em>n</em> is said to divide a number <em>m</em> if the remainder of the division <em>m/n</em> is 0. In that case, we can also say that <em>m</em> is divisible by <em>n</em> or that <em>n</em> is a factor of <em>m</em>.</p>
+
+            <p>Some divisibility properties:</p>
+
+            <ul>
+                <li>0/n = 0
+                <li>No number can be divided by 0.</li>
+                <li>An integer is <strong>even</strong> if it is divisible by 2.</li>
+                <li>An integer is <strong>odd</strong> if it is not divisible by 2.</li>
+                <li>A positive integer n &gt; 1 is <strong>prime</strong> if it is only divisible by 1 and itself.</li>
+                <li>A positive integer n &gt; 1 is <strong>composite</strong> if it has at least one factor different than 1 and itself.</li>
+            </ul>
+
+            <p>Note: the sum and product of integers always result in an integer, but the division of integers does <strong>not</strong> necessarily result in an integer.</p>
+            
+            <h3>Exponentiation</h3>
+
+            <p>The exponentiation <em>a<sup>n</sup></em> is equal to the multiplication of <em>a</em> repeated <em>n</em> times. For the expression <em>a<sup>n</sup></em>, <em>a</em> is called the base, while <em>n</em> is the exponent (also called the power).</p>
+
+            <p>Some exponentiation properties:</p>
+
+            <ul>
+                <li>a<sup>0</sup> = 1</li>
+                <li>a<sup>1</sup> = a</li>
+                <li>a<sup>1/2</sup> = &radic;<span style="border-top: 1px solid black;">a</span></li>
+                <li>a<sup>n+m</sup> = a<sup>n</sup> &middot; a<sup>m</sup></li>
+                <li>(a<sup>n</sup>)<sup>m</sup> = a<sup>nm</sup></li>
+                <li>(a &middot; b)<sup>n</sup> = a<sup>n</sup> &middot; b<sup>n</sup></li>
+                <li>a<sup>-n</sup> = 1/a<sup>n</sup></li>
+                <li>(a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></li>
+                <li>(a - b)<sup>2</sup> = a<sup>2</sup> - 2ab + b<sup>2</sup></li>
+                <li>(a + b)(a - b)<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></li>
+            </ul>
+
+            <h3>Logarithm</h3>
+
+            <p>The logarithm is the inverse function to exponentiation. If <em>a<sup>n</sup> = c</em>, then <em>log<sub>a</sub> c = n</em>.</p>
+
+            <p>Some logarithm properties:</p>
+
+            <ul>
+                <li>log<sub>a</sub> 1 = 0</li>
+                <li>log<sub>a</sub> a = 1</li>
+                <li>log<sub>a</sub>(xy) = log<sub>a</sub> x + log<sub>a</sub></li>
+                <li>log<sub>a</sub>(x/y) = log<sub>a</sub> x -  log<sub>a</sub> y</li>
+                <li>log<sub>a</sub>x<sup>b</sup> = b log<sub>a</sub> x</li>
+                <li>log<sub>a</sub>x = log<sub>k</sub>a &divide; log<sub>k</sub>x</li>
+                <li>a<sup>log<sub>a</sub>x</sup> = x</li>
+            </ul>
+
+            <h3>Inequality</h3>
+
+            <p>An inequality is a relation that makes a comparison between two mathematical expressions:</p>
+
+            <ul>
+                <li>a &lt; b: means a is (strictly) less than b.</li>
+                <li>a &gt; b: means a is (strictly) greater than b.</li>
+                <li>a &le; b: means a is less than or equal to b.</li>
+                <li>a &ge; b: means a is greater than or equal to b.</li>
+            </ul>
+
+            <p>Some inequality properties for integers different than zero:</p>
+
+            <ul>
+                <li>a &le; b and b &ge; a are equivalent</li>
+                <li>If a &le; b and b &le; c, then a &le; c</li>
+                <li>If a &le; b, then a+c &le; b+c and a&minus;c &le; b&minus;c</li>
+                <li>If a &le; b, then &minus;a &ge; &minus;b</li>
+                <li>If a &le; b, then 1/a &ge; 1/b</li>
+                <li>If a &le; b and c &ge; 0, then a &le; b+c</li>
+                <li>If a &ge; b and c &ge; 0, then a &ge; b&minus;c</li>
+            </ul>
+
+            <ul>
+                <li>a &lt; b and b &gt; a are equivalent</li>
+                <li>If a &lt; b and b &lt; c, then a &lt; c</li>
+                <li>If a &lt; b, then a+c &lt; b+c and a&minus;c &lt; b&minus;c</li>
+                <li>If a &lt; b, then &minus;a &gt; &minus;b</li>
+                <li>If a &lt; b, then 1/a &gt; 1/b</li>
+                <li>If a &lt; b and c &ge; 0, then a &lt; b+c</li>
+                <li>If a &gt; b and c &ge; 0, then a &gt; b&minus;c</li>
+            </ul>
+
+            <h3>Floor and ceiling functions</h3>
+
+            <ul>
+                <li>&lfloor;x&rfloor; means the floor of x, or greatest integer less than or equal to x, e.g., &lfloor;2.5&rfloor; = 2</li>
+                <li>&lceil;x&rceil; means the ceiling of x or the smallest integer greater than or equal to x, e.g. &lceil;2.5&rceil;=3</li>
+                <li>For any integer x: &lfloor;x&rfloor; = &lceil;x&rceil; = x</li>
+            </ul>
+
+        <hr />
+
+        <h2>Tips for Success</h2>
+
+            <p>Do <strong>a lot</strong> of practice. Try to ask as many questions as you can and avoid looking at the solutions until you come up with a solution yourself. Reading the solution gives you a false sense of security, as it is easy to convince yourself that you could also come up with the answer. The most important part is the experience you gain when trying to think about and work through the question, as this is what helps you learn.</p>
+
+            <p>Do not focus on grades! If you did not do as well as you expected in an assignment or exam, don't hold on to that. We all have bad days and there are a lot of components in this course that will help compensate for a bad grade. Focusing on a single numerical value will only get in the way of improvement.</p>
+
+            <p>Be extremely careful with outside information, specially generative AI tools, such as ChatGPT. Sharing and receiving solutions from others is considered academic misconduct. This includes information found on Google, and using ChatGPT. When in doubt, ask!</p>
+
+        <hr />
+
+        <h2>Using PrairieLearn</h2>
+
+            <p>PrairieLearn can be an excellent tool for studying and preparing for exams, but it's important to use it effectively. Each module contains several questions, and it's beneficial to attempt all of them. Students often focus more on the first questions and neglect the later ones, but the order of the questions does not indicate their importance.</p>
+
+            <p>Most importantly, you have five attempts for each question to arrive at the correct answer. <strong>Do not</strong> simply submit the same answer five times to reveal the correct one; this approach will not aid your learning. Instead, think carefully about why your answer might be incorrect. Review the feedback provided for each question, ask questions on Piazza, attend office hours, or discuss with your peers. Simply reading the correct answer might give you the illusion of learning, but it doesn't lead to true understanding. In this course, we assess not only your knowledge but also your ability to critically analyze and correct your mistakes; a crucial skill in computer science and life in general.</p>
+
+            <p>Lastly, avoid focusing solely on how to answer a specific type of question or how to answer them quickly. While these are common concerns on Piazza, they often aren't the most helpful. All questions should be approached with a solid understanding of the course material. For example, you shouldn't always rely on the same answering method. You can practice using questions with dropdown options, and we can also ask similar questions in different formats. When practicing, you should focus solely on the content. You will improve your speed and accuracy through practice and applying your knowledge. Remember, being efficient with one particular question in the practice assessments doesn't mean you're fully prepared for the exam if you're relying on shortcuts rather than genuine understanding.</p>
+
+            <p>Finally, studying hard does not mean studying smart. Your approach to studying is just as important as the amount of time you spend on course material.</p>
+
+        <hr />
+        
+        <h2>Golden Tips</h2>
+
+            <p>Read the rules and follow them! We have around 500 students in this course, and it is not possible to personalize the course based on your specific needs and requests.</p>
+
+            <p>The main goal of the teaching staff is to be fair to all students; therefore, we have to be strict with rules and deadlines. If you have a long-term issue that impacts your ability to submit work on time, please talk to your faculty advising office. There is a limit to what instructors can do to help you.</p>
+
+            <p>Be respectful to all members of our community at all times.</p>
+
+            <p>Piazza is a great place to have your questions answered quickly, but that does not mean it is the proper place for all communication with the staff. You should not use it as a place to rant or as an office hour replacement. Course-specific feedback and concerns can be directed to the course instructors.</p>
+
+            <p>Questions that require a longer or more detailed explanation should be directed to office hours. Be aware of what you are saying on Piazza and set the visibility (public or private) accordingly. Are you giving away a solution with your question? Ask privately on Piazza. Are you unhappy about something and want to reach out to the instructors? Send an email.</p>
+
+            <p>Take the time to search Piazza and Canvas before asking a question. The teaching team spends a significant amount of time writing announcements and organizing Canvas to ensure that information is easily accessible. Please use this.</p>
+
+        <hr />
+
+        <h2>What to do Next</h2>
+
+            <p>Now, you are ready to start your CPSC 121 adventure!</p>
+
+            <p><span>Read the syllabus and check the calendar"both found on Canvas and familiarize yourself with the information found there. Notice that reading those pages is mandatory and part of your coursework.</p>
+
+            <p>Remember to also enroll on our Piazza page, where you will be able to ask questions and be up-to-date with all the course information posted during the term.</p>
+
+            <p>See you soon in lecture! :)</p>
+
+    </main>
+
+</body>
+</html>
+
+

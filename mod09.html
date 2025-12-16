@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 09</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 09: Weak Induction Proofs</h1>
+
+        <h2>Sequences</h2>
+
+            <p>A sequence is an ordered list of numbers, often formed by a recognizable pattern. This pattern can typically be described by a formula. For instance, consider a sequence defined as a_n = 2n<sup>2</sup>+1 for n &gt; 0. That formula describes a pattern like 3, 9, 19, 33, 51, and so on, where a<sub>1</sub> = 3, a<sub>2</sub> = 9, a<sub>3</sub> = 19 and so on.</p>
+
+            <p>A sequence can also be defined recursively in terms of its own previous values. A well-known example is the Fibonacci sequence, defined as F<sub>0</sub> = 0, F<sub>1</sub> = 1 and F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub> for all n &ge; 2. In this sequence, each term is calculated as the sum of the two preceding terms, giving: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89...</p>
+
+            <h3>Summation</h3>
+
+            <p>When we want to find the total sum of a group of terms in a sequence, we use summation notation, symbolized by the Greek letter sigma &Sigma;. This allows us to express the sum of terms starting from an index m and ending at n, where m &le; n. A summation that has m &gt; n is called n empty summation and does not have any elements.The variable k often serves as the index, taking on each integer value from m to n, applying the formula for each value, and adding the results together.</p>
+
+            <p>So we have that the sum of all elements in a sequence a<sub>m</sub>, a<sub>m+1</sub>, a<sub>m+2</sub>, ...., a<sub>n-1</sub>, a<sub>n</sub> is given by \(\sum\limits_{k=m}^n a_k\).</p>
+
+            <p>\(\sum\limits_{i=1}^{5} (2i + 1)\) = (2&middot;1 + 1) + (2&middot;2 + 1) + (2&middot;3 + 1) + (2&middot;4 + 1) + (2&middot;5 + 1) = 3 + 5 + 7 + 9 + 11 = 35</p>
+
+            <p>\(\sum\limits_{i=2}^{6} 2i\) = (2&middot;2) + (2&middot;3) + (2&middot;4) + (2&middot;5) + (2&middot;6)= 4 + 6 + 8 + 10 + 12 = 40</p>
+
+            <p>Think of how this relates to, for example, a universal quantifier. &forall;x &in; D, P(x) is like a collection of statements about each element in the set D connected together by &xwedge;: P(d<sub>1</sub>) &xwedge; P(d<sub>2</sub>) &xwedge; ... &xwedge; P(d<sub>n</sub>). A summation using &Sigma; works similarly except that (1) it defines the set as a range of integer values from a low element (m above) to a high element (n above) and (2) it connects the body of the summation together with addition (&plus;) rather than logical AND.</p>
+
+            <h3>Product</h3>
+
+            <p>Similarly, when multiplying the terms of a sequence instead of adding them, we use the product notation, represented by the Greek letter pi &Pi;. As with summation, the index k moves from the starting point to the end point, but now the values are multiplied together instead of summed.</p>
+
+            <p>So we have that the product of all elements in a sequence a<sub>m</sub>, a<sub>m+1</sub>, a<sub>m+2</sub>, ...., a<sub>n-1</sub>, a<sub>n</sub> is given by \(\prod\limits_{k=m}^n a_k\).</p>
+
+            <p>\(\prod\limits_{i=1}^{5} (2i + 1)\) = (2&middot;1 + 1) &middot; (2&middot;2 + 1) &middot; (2&middot;3 + 1) &middot; (2&middot;4 + 1) &middot; (2&middot;5 + 1) = 3 &middot; 5 &middot; 7 &middot; 9 &middot; 11 = 10395</p>
+
+            <p>\(\prod\limits_{i=2}^{6} 2i\) = (2&middot;2) &middot; (2&middot;3) &middot; (2&middot;4) &middot; (2&middot;5) &middot; (2&middot;6)= 4 &middot; 6 &middot; 8 &middot; 10 &middot; 12 = 23040</p>
+
+            <h3>Last Term of Summation and Product</h3>
+
+            <p>When working with either a summation or a product, it's sometimes useful to isolate the last term. This is done by reducing the upper limit of the summation or product by one and then explicitly including the final term outside of the notation. For example, if a summation goes from k=0 to 6, the term at k=6 can be written separately, and the summation can instead go up to k=5.</p>
+
+            <table style="border-collapse: collapse;" border="0">
+                <tr>
+                    <td>\(\sum\limits_{k=m}^n a_k = a_n + \sum\limits_{k=m}^{n-1} a_k\)</td>
+                    <td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+                    <td>\(\prod\limits_{k=m}^n a_k = a_n \cdot \prod\limits_{k=m}^{n-1} a_k\)</td>
+                </tr>
+            </table>
+
+            <p>For example, \(\sum\limits_{i=2}^{6} 2i\) has the last term⁣, 2 &middot; 6 = 12 so we can write this summation as 12 + \(\sum\limits_{i=2}^{5} 2i\), making the maximum value of k 5, instead of 6.</span></p>
+
+        <hr />
+
+        <h2>Mathematical Induction</h2>
+
+            <p>Mathematical induction is a logical technique used to prove that a statement P(n) is true for all positive integers. It begins with verifying the statement for the smallest valid number, known as the base case. Then, assuming the statement holds for an arbitrary number n, the goal is to show it must also hold for the next consecutive number, n+1 (also known as <strong>weak induction</strong>). If both steps are successful, the truth of the statement for all such values follows, much like a line of dominos falling one after another once the first has been pushed.</p>
+
+            <p>
+                Proving &forall;n &in; &Zopf;<sup>+</sup>, P(n):<br />
+                &nbsp; &nbsp; 1. Prove P(n=1) is true<br />
+                &nbsp; &nbsp; 2. Prove &forall;n &in; &Zopf;<sup>+</sup>, P(n) &rarr; P(n+1):<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; 2a. Assume P(n) is true<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; 2b. Prove P(n+1) is true
+            </p>
+
+            <p>The core idea of mathematical induction is similar to a domino effect. By proving that the first statement, P(1), is true, we effectively push the first domino. Then, we assume that if one statement, P(n), is true, the next one, P(n+1), must also be true, ensuring the entire chain continues to fall. Importantly, we are not directly proving P(n) in the inductive step, but rather showing that P(n) &rarr; P(n+1). What matters is that we are always proving the next consecutive case based on the one we assumed. Attempting to assume P(n+1) and prove P(n) would break the logic of induction.</p>
+
+            <p>Going back to our domino analogy: if you push one domino, the ones before it won't fall. Induction only works when the forward chain of implication is maintained. Consider what happens when we push domino 1 over, i.e., P(1) is true. Since we know &forall;n &in; &Zopf;<sup>+</sup>, P(n) &rarr; P(n+1), we know by our rule Universal Instantiation that P(1) &rarr; P(1+1). So, the second domino P(2) must also "fall". Then, universal instantiation also gives us P(2) &rarr; P(3), causing the third to fall, and so on.</p>
+
+            <p>There are two common approaches to induction, both of which are logically equivalent and usually yield similar proofs. However, depending on the problem, one method might be more convenient than the other. We might assume P(n) and prove P(n+1), or assume P(n-1) and prove P(n). In both cases, the base case remains the same; it must be the smallest value in the domain of the problem.</p>
+
+            <h3>Base Case</h3>
+
+            <p>In the base case, the variable n is replaced with the smallest value for which the statement should hold, similar to an existential proof. This part of the proof establishes that the statement is true at the starting point.</p>
+
+            <h3>Induction Hypothesis (IH)</h3>
+
+            <p>Now, we want to prove &forall;n &in; &Zopf;<sup>+</sup>, P(n) &rarr; P(n+1). The hypothesis is the part of the proof when we assume the left-hand side of the implication in a universal proof, as we saw in Module 7. In this part, we begin by restating the statement we aim to prove and assume it to be true for a specific case. At first, this may seem counterintuitive, almost as if we're assuming the conclusion in order to prove it. However, what we're actually doing is assuming that P(n) holds for a particular value (usually the previous one in the sequence), not for all values. This assumption forms the basis of the inductive step, allowing us to show that <strong>if</strong> P(n) is true, <strong>then</strong> P(n+1) must also be true.</p>
+
+            <h3>Induction Step (IS)</h3>
+
+            <p>The induction step uses the assumption that the statement holds for n to prove that it also holds for n+1. This step typically involves substituting the hypothesis into the equation and showing that it logically leads to the next case being true as well. Once this is shown, the conclusion is that the statement holds for all positive integers starting from the base case.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>\(\sum\limits_{i=1}^n i = \frac{n(n+1)}{2}\), for any integer n &gt; 0.</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            <span style="text-decoration: underline;">Base Case:</span>
+                            We show that P(n=1) is true<br />
+                            \(\sum\limits_{i=1}^{1} i = 1\)
+                            &nbsp; &nbsp; &nbsp; &nbsp; and &nbsp; &nbsp; &nbsp; &nbsp; 
+                            \(\frac{n(n+1)}{2} = \frac{1(1+1)}{2} = \frac{2}{2} = 1\)<br />
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Hypothesis:</span><br />
+                            Assume \(\sum\limits_{i=1}^n i = \frac{n(n+1)}{2}\)
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Step:</span><br />
+                            Consider an unspecified integer n &ge; 1<br />
+                            \(\sum\limits_{i=1}^{n+1} i = (n+1) + \sum\limits_{i=1}^n i\)<br />
+                            \(~~~~~ = (n+1) + \frac{n(n+1)}{2}\)<br />
+                            \(~~~~~ = \frac{2(n+1)}{2} + \frac{n(n+1)}{2}\)<br />
+                            \(~~~~~ = \frac{2(n+1) + n(n+1)}{2}\)<br />
+                            \(~~~~~ = \frac{(n+2)(n+1)}{2}\)<br />
+                            \(~~~~~ = \frac{(n+1)(n+2)}{2}\)
+                        </p>
+                        <p>Therefore, by mathematical induction, \(\sum\limits_{i=1}^n i = \frac{n(n+1)}{2}\), for any integer n &gt; 0.</p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>Notice that the lower limit of the summation tells us the starting point of the expression. In this case, the sum begins when n=1. This doesn't mean the first term is equal to 1, but it does mean we evaluate the expression by plugging in n=1. So, for the base case, we simply replace n with 1 in both sides of the equation and check that they are equal.</p>
+                        <p>The inductive hypothesis (IH) assumes the statement is true for some particular value of n. Then, using that assumption, we aim to show the statement also holds for n+1.</p>
+                        <p>Since we are using the P(n) &rarr; P(n+1) approach, our inductive step (IS) needs to prove the expression for n+1. This means we rewrite the formula, replacing every n with n+1, and this becomes our goal, the result we want to reach.</p>
+                        <p>To get there, we start with the left-hand side of the equation for n+1. We then remove the last term from the sum, so the remaining part matches the form given in our IH. This lets us apply the IH to that part, and we use regular algebra to simplify the rest and reach the final expression.</p>
+                        <p>It's important to highlight that we do not assume the formula we are trying to prove. Instead, we work from the left-hand side, use the IH when allowed, and manipulate the expression step by step until we arrive at the right-hand side.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <p>The same proof can be done using a different hypothesis. We are now proving &forall;n &in; &Zopf;<sup>+</sup>, P(n-1) &rarr; P(n).</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>\(\sum\limits_{i=1}^n i = \frac{n(n+1)}{2}\), for any integer n &gt; 0.</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            <span style="text-decoration: underline;">Base Case:</span>
+                            We show that P(n=1) is true<br />
+                            \(\sum\limits_{i=1}^{1} i = 1\)
+                            &nbsp; &nbsp; &nbsp; &nbsp; and &nbsp; &nbsp; &nbsp; &nbsp; 
+                            \(\frac{n(n+1)}{2} = \frac{1(1+1)}{2} = \frac{2}{2} = 1\)<br />
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Hypothesis:</span><br />
+                            Assume \(\sum\limits_{i=1}^{n-1} i = \frac{(n-1)(n-1+1)}{2} = \frac{(n-1)n}{2}\)
+                        </p>
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Step:</span><br />
+                            Consider an unspecified integer n &gt; 1<br />
+                            \(\sum\limits_{i=1}^{n} i = n + \sum\limits_{i=1}^{n-1} i\)<br />
+                            \(~~~~~ = n + \frac{(n-1)n}{2}\)<br />
+                            \(~~~~~ = \frac{2n}{2} + \frac{(n-1)n}{2}\)<br />
+                            \(~~~~~ = \frac{2n + (n-1)n}{2}\)<br />
+                            \(~~~~~ = \frac{n(2+n-1+)}{2}\)<br />
+                            \(~~~~~ = \frac{n(n+1)}{2}\)
+                        </p>
+                        <p>Therefore, by mathematical induction, \(\sum\limits_{i=1}^n i = \frac{n(n+1)}{2}\), for any integer n &gt; 0.</p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>This proof is very similar to the previous one. The base case is identical, but now we're using the implication P(n &minus; 1) &rarr; P(n) instead of P(n) &rarr; P(n+1). This means that in the inductive hypothesis (IH), we assume the formula holds for n &minus; 1.</p>
+                        <p>In the inductive step (IS), we aim to prove the formula for n. So the summation in this step looks exactly the same as in the original problem, no need to shift the index.</p>
+                        <p>While the algebra may look slightly different from the previous version, the main idea is the same: We begin with the left-hand side of the equation, remove the last term from the summation, and then apply the IH to the remaining part. This allows us to use what we've assumed and complete the proof using basic algebraic simplifications.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <p>We need our inductive step to prove the property P for every value except the base case value (or values). If we're proving P(n+1), we need n+1 to be able to take on every value except the base case value. That means we need n + 1 &gt; 1, since the base case here is 1. If we subtract one from both sides of that inequality, we get n &gt; 0 or equivalently, as we wrote it above, n &ge; 1. What if we wanted to prove P(n) based on P(n-1) instead? Well, then we need n rather than n+1 to take on every value except the base case values. So, we need n &gt; 1. Notice how the change in bounds is entirely driven by where we're proving property P.</p>
+
+        <hr />
+
+        <h2>Recursion</h2>
+
+            <p>The logic of induction also provides a foundation for writing recursive algorithms. In such algorithms, the base case stops the recursion, while the step that reduces the problem toward the base mimics the induction step. For example, the proof shown here before can help us to create a recursive algorithm to calculate that summation:</p>
+
+            <p>
+                def P(n):<br />
+                &nbsp; &nbsp; if n=1:<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; return 1<br />
+                &nbsp; &nbsp; else:&nbsp;<br />
+                &nbsp; &nbsp; &nbsp; &nbsp; return P(n-1)+n
+            </p>
+
+            <p>It is important to ensure that both the proof and the corresponding recursive algorithm account for each number in the sequence exactly once. In this case, we adopt the form P(n &minus; 1) &rarr; P(n), and we are proving the statement for P(n). In this case, our base case is typically n=1, which becomes the stopping point of the recursion. All other values are handled through recursive calls, corresponding to the induction step. In the recursive code, this logic appears in the condition: the else branch only executes when n &gt; 1, not when n &ge; 1.</p>
+
+            <p>To illustrate this, consider computing the value of P(3):</p>
+
+            <ul>
+                <li>The program begins with n=3, enters the else branch, and calls P(2).</li>
+                <li>With n=2, it again enters the else and calls P(1).</li>
+                <li>At n=1, it meets the base case, enters the if branch, and returns 1.</li>
+                <li>The call for P(2) receives this value, adds 2, and returns 3.</li>
+                <li>Then, the call for P(3) receives the result of P(2), adds 3, and returns 6.</li>
+                <li>Thus, the final result is 6.</li>
+            </ul>
+
+            <p>&nbsp;</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>For every positive integer n, n(n + 1) is even.<br />
+                            <em>Hint: the sum of two even numbers is even.</em>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            <span style="text-decoration: underline;">Base Case:</span><br />
+                            For n=1: 1(1+1) = 2 which is even
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Hypothesis:</span><br />
+                            Assume (n-1)n&nbsp;is even
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Step:</span><br />
+                            Consider an unspecified integer n &gt; 1<br />
+                            n(n+1) = n(n-1+2) = n(n-1) + 2n<br />
+                            By IH, n(n-1) is even<br />
+                            By the definition of even, 2n is even<br />
+                            By the hint, n(n-1) + 2n is even<br />Therefore n(n+1) is even<br />
+                        </p>
+                        <p>Therefore, by mathematical induction, n(n+1) is even for any integer n &gt; 0.</p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>This problem can also be solved using a direct proof. Most statements in mathematics can be proven in more than one way, and in some cases, a particular method makes the proof simpler or more elegant. It's worth noting that induction can sometimes reveal a recursive structure, which may be useful in algorithmic contexts, so in those cases, it may be preferred over a direct proof.</p>
+                        <p>In this problem, we want to prove that the product of two consecutive integers is always even. That is, we want to prove that n(n + 1) is even for all integers n. In our previous example, we explicitly stated what P(n) was. Doing so can make it easier to understand what your job is in an inductive proof. We didn't do that above, and you'll see proofs that don't. However, in your scratch work, you can and usually should write out the property you're trying to prove P(n). What is it here? P(n) &equiv; n(n+1) is even}. Now that we've written that out, can you tell if this proof is using the P(n) &rarr; P(n+1) or P(n-1) &rarr; P(n) form?</p>
+                        <p>We're also given a helpful hint: the sum of two even numbers is even. Hints like this are optional, but often they point toward a cleaner or easier solution. So if, during our proof, we end up with a sum where both parts are even, we can immediately conclude that the whole expression is even, which is exactly our goal.</p>
+                        <p>To make progress, we use algebraic manipulation to connect this expression with something known. One useful approach is to rewrite the product in a way that involves a known even expression: n(n + 1) = n((n - 1) + 2) = n(n - 1) + 2n</p>
+                        <p>The term n(n - 1) is the product of two consecutive integers, just like our original expression, and we can assume (as part of a previous step or inductive hypothesis) that it is even. The term 2n is clearly even, since it's 2 times an integer. Now we have a sum of two even numbers. By the hint, their sum is also even. Therefore, n(n + 1) must be even.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>For every positive integer n, n(n + 1) is even.<br />
+                            <em>Hint: the sum of two even numbers is even.</em>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            <span style="text-decoration: underline;">Base Case:</span><br />
+                            For n=1: 1(1+1) = 2 which is even
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Hypothesis:</span><br />
+                            Assume n(n+1) is even<br />
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Step:</span><br />
+                            Consider an unspecified integer n &ge; 1<br />
+                            (n+1)(n+2) = n(n+1) + 2(n+1)<br />
+                            By IH, n(n+1) is even<br />
+                            By the definition of even, 2(n+1) is even<br />
+                            By the hint, n(n+1) + 2(n+1) is even<br />
+                            Therefore (n+1)(n+2) is even
+                        </p>
+                        <p>Therefore, by mathematical induction, n(n+1) is even for any integer n &gt; 0.</p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>Again, this proof is very similar to the previous one. The base case remains the same. The main difference is that now, in our inductive hypothesis (IH), we assume the statement holds for some value of n, using the exact same expression as in the original problem.</p>
+                        <p>In the inductive step (IS), we aim to prove the statement for n + 1, which means we take the original expression and replace every instance of n with n + 1.</p>
+                        <p>Although the algebraic manipulation may look a little different, the overall strategy is the same: start from the left-hand side of the expression for n + 1, use the IH when possible, and simplify step by step to reach the desired form.</p>
+                    </td>
+                </tr>
+            </table>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 5.1 and 5.2</span></p></li>
+                <li><p>4th edition: 5.1 and 5.2</p></li>
+                <li><p>3rd edition: 4.1 and 4.2</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>

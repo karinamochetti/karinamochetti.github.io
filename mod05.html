@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 05</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 05: Sets and Predicate Logic</h1>
+
+        <h2>Sets</h2>
+
+            <p>A <strong>set</strong> is an unordered collection of distinct, separate objects. Sets do not allow duplicates, and the order of the elements is irrelevant. Sets are denoted using curly brackets, with all elements separated by commas.</p>
+
+            <p>For example, set A has elements 1, 2, 3, and 4; and set B has elements 'red', 'green', 'blue', and 'pink':</p>
+
+            <p>A = {1, 2, 3, 4}<br />B = {'red', 'green', 'blue', 'pink'}</p>
+
+            <p>Set elements can be of any type and do not need to be related. For example, C = {a, 2, 1, b, 'blue', 'yellow'} is a valid set. Furthermore, two sets are considered equal if they contain the same elements, regardless of order; therefore, D = {4, 3, 2, 1} is equal to A.</p>
+
+            <p>A set can also be an element of a set, allowing for recursive definitions. For example, set E = {a, b} is different than set F = {{a}, b}, since the elements of E are both letters, and the elements of F are a letter and another set, which has a letter as an element. Observe carefully that a is not an element of the set F, since this is not "transitive": the parent of my parent is not therefore also my parent!</p>
+
+            <p>The <strong>empty set</strong> (a set with no elements) is denoted as {} or &empty;. The <strong>universal set</strong> (denoted as &#119984;) contains all elements under consideration in a given context.</p>
+
+            <p>Set operations can be divided into the ones that evaluate to true/false and the ones that return a new set:</p>
+
+            <h3>Contains (&in;)</h3>
+
+            <p>The operation x &in; S means S contains x (or equivalently x is an element of S), and it evaluates to true if an element x is in set S.</p>
+
+            <p style="text-align: center;"><img style="width: 15%;" src="./images/mod05/in.png"></p>
+
+            <h3>Does Not Contain (&notin;)</h3>
+
+            <p>The operation x &notin; S means S does not contain x, and it evaluates to true if an element x is not in set S.</p>
+
+            <p style="text-align: center;"><img style="width: 20%;" src="./images/mod05/notin.png"></p>
+
+            <h3>Subset (&sube;)</h3>
+
+            <p>The operation A &sube; B means A is a subset of B, and it evaluates to true if all elements in A are also elements in B. B may or may not have other elements.</p>
+
+            <p style="text-align: center;"><img style="width: 50%;" src="./images/mod05/subset.png"></p>
+
+            <h3>Not a Subset (&nsube;)</h3>
+
+            <p>The operation A &nsube; B means A is not a subset of B, and it evaluates to true if at least one element in A is not an element in B.</p>
+
+            <p style="text-align: center;"><img style="width: 50%;" src="./images/mod05/notsubset.png"></p>
+
+            <h3>Proper Subset (&sub;)</h3>
+
+            <p>The operation A &sub; B means A is a proper subset of B, and it evaluates to true if all elements in A are also elements in B, and B has at least one extra element that is not in A.</p>
+
+            <p style="text-align: center;"><img style="width: 50%;" src="./images/mod05/propersub.png"></p>
+
+            <p>Notice that &in; is an operator that takes an operand on its left that may be any type of thing and on its right a set, while &sube; is an operator that takes two operands, both of which must be sets.</p>
+
+            <h3>Equal (&equals;)</h3>
+
+            <p>The operation A = B means A is equal to B, and it evaluates to true if all elements in A are in B, and all elements in B are in A, i.e., both sets have exactly the same elements.</p>
+
+            <p style="text-align: center;"><img style="width: 50%;" src="./images/mod05/equal.png"></p>
+
+            <h3>Union (&xcup;)</h3>
+
+            <p>The operation C = A &xcup; B means A union B and returns a set C, which is the set of all elements that are at least in one of A or B.</p>
+
+            <p style="text-align: center;"><img style="width: 50%;" src="./images/mod05/union.png"></p>
+
+            <h3>Intersection (&xcap;)</h3>
+
+            <p>The operation C = A &xcap; B means A intersection B and returns a set C, which is the set of all elements that are common to both A and B.</p>
+
+            <p style="text-align: center;"><img style="width: 50%;" src="./images/mod05/inter.png"></p>
+
+            <h3>Difference (&minus;)</h3>
+
+            <p>The operation C = B - A means the difference of B and A and returns a set C, which is the set of all elements that are in B but not in A.</p>
+
+            <p style="text-align: center;"><img style="width: 50%;" src="./images/mod05/diff.png"></p>
+
+            <h3>Complement (<sup>c</sup>)</h3>
+
+            <p>The operation C = A<sup>c</sup> means the complement of A and returns a set C, which is the set of all elements in the universal set that are not in A.</p>
+
+            <p style="text-align: center;"><img style="width: 50%;" src="./images/mod05/comp.png"></p>
+
+        <p>&nbsp;</p>
+
+        <hr />
+
+        <h2>Common Sets</h2>
+
+            <table style="border-collapse: collapse;" cellpadding="10", border="1">
+                <tr>
+                    <td>Integers</td>
+                    <td style="text-align: center;">&Zopf;</td>
+                    <td>{..., -2, -1, 0, 1, 2, ...}</td>
+                </tr>
+                <tr>
+                    <td>Positive integers</td>
+                    <td style="text-align: center;">&Zopf;<sup>+</sup></td>
+                    <td>{1, 2, 3, 4, ...}</td>
+                </tr>
+                <tr>
+                    <td>Non-zero integers</td>
+                    <td style="text-align: center;">&Zopf;<sup>*</sup></td>
+                    <td>{..., -2, -1, 1, 2, ...}</td>
+                </tr>
+                <tr>
+                    <td>Real Numbers</td>
+                    <td style="text-align: center;">&Ropf;</td>
+                    <td>{..., <sup>20</sup>/<sub>6</sub>, 0, 1, &radic;<span style="border-top: 1px solid black;">2</span>, &pi;, ...}</td>
+                </tr>
+                <tr>
+                    <td>Rational Numbers</td>
+                    <td style="text-align: center;">&Qopf;</td>
+                    <td>{<sup>a</sup>/<sub>b</sub>, a &in; &Zopf;, b &in; &Zopf;<sup>*</sup>}</td>
+                </tr>
+                <tr>
+                    <td>Irrational Numbers</td>
+                    <td style="text-align: center;"><span style="border-top: 1px solid black;">&Qopf;</span></td>
+                    <td>{x &in; &Ropf;, x &notin; &Qopf;}</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Natural Numbers</td>
+                    <td style="text-align: center;">&Nopf;<sub>0</sub></td>
+                    <td>{0, 1, 2, 3, 4, ...}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">&Nopf;<sub>1</sub></td>
+                    <td>{1, 2, 3, 4, ...}</td>
+                </tr>
+            </table>
+
+        <p>&nbsp;</p>
+
+        <hr />
+
+        <h2>Predicates</h2>
+
+            <p>A predicate is a logical statement that can be true or false depending on the values of its variables. Unlike standard propositions, predicates accept variables as inputs. For example, for the predicate P(x): x<sup>2</sup> &gt; x the variable x can take any number, but the predicate evaluates to only true or false, for for x=1, P(x) is false, and for x=2, P(2) is true.</p>
+
+            <p>If x belongs to a set D, the <strong>truth set</strong> of a predicate P(x) is given by all elements in D that make P(x) true. We denote it by S = {x &in; D | P(x)} which reads as <em>"all elements x in D such that P(x) holds"</em>. Notice that the symbol "|" means <em>"such that"</em>. For example, for ⁣D = {-1, 0, 1, 2, 3} and P(x): x<sup>2</sup> &gt; x we have that the truth set S= {-1, 2, 3}.</p>
+
+            <p>Quantifiers define how variables relate to the domain. When connected to the <strong>universal quantifier</strong>, represented by &forall; (read as <em>for all</em>), the variable will represent all elements found in the domain. When connected to the <strong>existential quantifier</strong>, represented by &exist; (read as <em>exists</em>), the variable will represent at least one of the elements found in the domain.</p>
+
+            <p>For example, consider that F is the domain of all animals in a forest, and Lion(x) is true when x is a lion. &exist;x &in; F, Lion(x) means <em>There is at least one lion in the forest</em>, while &forall;x &in; F, Lion(x) means <em>All animals in the forest are lions.</em></p>
+                                    
+            <p>The negation of a universal statement is an existential statement with the negated predicate, and vice versa.</p>
+                                    
+            <p style="text-align: center; font-size: 20px;">~&forall;x &in; D, Q(x) &equiv; ~(&forall;x &in; D, Q(x)) &equiv; &exist;x &in; D, ~Q(x)</p>
+
+            <p style="text-align: center; font-size: 20px;">~&exist;x &in; D, Q(x) &equiv; ~(&exist;x &in; D, Q(x)) &equiv; &forall;x &in; D, ~Q(x)</p>
+
+            <p>Note: the quantifier itself is not something you can negate, as it defines a variable's domain. For example, the statement (~&forall;x &in; D), Q(x) is ill-defined since &forall;x &in; D means that x represents all elements in D, it is a declaration of x and cannot be evaluated to true or false; therefore, it cannot be negated. So ~&forall;x &in; D, Q(x) can only mean ~(&forall;x &in; D, Q(x)).</p>
+                                    
+            <p>Within a predicate, it is possible to use any equivalence laws to create equivalence predicates. For example, the following predicates are all equivalent based on De Morgan's law.</p>
+                                    
+            <p style="font-size: 20px;">
+                ~&forall;x &in; D, ~(P(x) &xwedge; Q(x))<br />
+                ~&forall;x &in; D, (~P(x) &xvee; ~Q(x))<br />
+                &exist;x &in; D, ~(~P(x) &xvee; ~Q(x))<br />
+                &exist;x &in; D, (P(x) &xwedge; Q(x))<br />
+            </p>
+
+            <h3>Order of Quantifiers</h3>
+
+            <p>The order of quantifiers in a predicate is important; changing the order can alter the meaning of the statement. The predicate &forall;x &in; D, &exist;y &in; D, P(x, y) is not equivalent to &exist;y &in; D, &forall;x &in; D, P(x, y). In predicate logic, quantifiers are evaluated from left to right. This means that when we encounter an existential quantifier, we can choose a value for that variable using all previously defined information. So in the predicate &forall;x &in; D, &exist;y &in; D, P(x, y), we can choose a different value of y for each x, while in the predicate &exist;y &in; D, &forall;x &in; D, P(x, y) we have to choose only one y that has to work for all values of x.</p>
+
+            <p>Consider the predicate &forall;x &in; &Zopf;<sup>+</sup>, &exist;y &in; &Zopf;<sup>+</sup> y = x+x. Here, for each value of x, we are allowed to choose a different value of y. Since x is defined first, we can use its value to define y accordingly. For example, if x = 1, we can choose y = 2; if x = 2, then y = 4, and so on. This predicate is true, because for every x, there exists a y (specifically y = 2x) that satisfies the condition.</p>
+
+            <p>Now consider &exist;y &in; &Zopf;<sup>+</sup>, &forall;x &in; &Zopf;<sup>+</sup>, y = x+x. In this case, we must choose a<strong> </strong>single value for y before knowing the value of x. That value of y must then satisfy the equation y = 2x for all values of x; which is impossible. For instance, y = 2 works only when x = 1, y = 4 works only when x = 2, and so on. There is no single value of y that works for every x, so this predicate is false.</p>
+
+        <hr />
+
+        <h2>Set Operations as Predicates</h2>
+
+            <p>All set operations can be expressed in terms of logic and predicates. Set operations that evaluate to true/false can be described by predicates using quantifiers, while operations that return sets can be described as truth sets. For example, let's express (A &xcup; B) = (A &minus; C) using predicate logic:</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10", border="1">
+                <tr>
+                    <td>(A &xcup; B) = (A &minus; C)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&forall;x &in; &#119984;, x &in; (A &xcup; B) &harr; x &in; (A &minus; C)</td>
+                    <td>From A = B definition</td>
+                </tr>
+                <tr>
+                    <td>&forall;x &in; &#119984;, (x &in; A &xvee; x &in; B) &harr; x &in; (A &minus; C)</td>
+                    <td>From the union definition</td>
+                </tr>
+                <tr>
+                    <td>&forall;x &in; &#119984;, (x &in; A &xvee; x &in; B) &harr; (x &in; A &xwedge; x &notin; C)</td>
+                    <td>From the minus definition</td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>The following table lists the logical definition of all set operations used in this course:</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10", border="1">
+                <tr>
+                    <td style="text-align: center;"><strong>English</strong></td>
+                    <td style="text-align: center;"><strong>Set Operation</strong></td>
+                    <td style="text-align: center;"><strong>Predicate</strong></td>
+                </tr>
+                <tr>
+                    <td>S contains a</td>
+                    <td>a &in; S</td>
+                    <td>a &in; S</td>
+                </tr>
+                <tr>
+                    <td>S does not contain a</td>
+                    <td>a &notin; S</td>
+                    <td>~(a &in; S)</td>
+                </tr>
+                <tr>
+                    <td>A is a subset of B</td>
+                    <td>A &sube; B</td>
+                    <td>&forall;x &in; &#119984;, x &in; A &rarr; x &in; B</td>
+                </tr>
+                <tr>
+                    <td>A is not a subset of B</td>
+                    <td>A &nsube; B</td>
+                    <td>&exist;x &in; &#119984;, x &in; A &xwedge; x &ne; B</td>
+                </tr>
+                <tr>
+                    <td>A is a proper subset of B</td>
+                    <td>A &sub; B</td>
+                    <td>&forall;x &in; &#119984;, (x &in; A &rarr; x &in; B) &xwedge; &exist;y &in; &#119984;, y &in; B &xwedge; y &ne; A</td>
+                </tr>
+                <tr>
+                    <td>A is equal to B</td>
+                    <td>A &equals; B</td>
+                    <td>&forall;x &in; &#119984;, x &in; A &harr; x &in; B</td>
+                </tr>
+                <tr>
+                    <td>A is different from B</td>
+                    <td>A &ne; B</td>
+                    <td>&exist;x &in; &#119984;, x &in; A &oplus; x &in; B</td>
+                </tr>
+                <tr>
+                    <td>A union B</td>
+                    <td>C = A &xcup; B</td>
+                    <td>C = { x &in; &#119984; | x &in; A &xvee; x &in; B }</td>
+                </tr>
+                <tr>
+                    <td>A intersection B</td>
+                    <td>C = A &xcap; B</td>
+                    <td>C = { x &in; &#119984; | x &in; A &xwedge; x &in; B }</td>
+                </tr>
+                <tr>
+                    <td>B minus A</td>
+                    <td>C = B &minus; A</td>
+                    <td>C = { x &in; &#119984; | x &in; B &xwedge; x &ne; A }</td>
+                </tr>
+                <tr>
+                    <td>Complement of A</td>
+                    <td>C = A<sup>c</sup></td>
+                    <td>C = { x &in; &#119984; | x &ne; A }</td>
+                </tr>
+            </table>
+
+            <p>You don't need to memorize this list; a <a href="./files/FormulaSheet.pdf">formula sheet</a> will be provided to you at all assessments during the course.</em></p>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 6.1, 3.1, 3.2, 3.3</span></p></li>
+                <li><p>4th edition: 6.1, 3.1, 3.2, 3.3</p></li>
+                <li><p>3rd edition: 5.1, 2.1, 2.2, 2.3</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>

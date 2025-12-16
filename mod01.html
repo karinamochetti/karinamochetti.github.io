@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 01</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 01: Propositional Logic</h1>
+
+        <h2>Truth Value</h2>
+
+            <p>A <strong>proposition</strong> (or statement) is a sentence that has a truth value, i.e., it is only <strong>true</strong> or <strong>false</strong>, but never both. For example:</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10", border="1">
+            <tr>
+                <td>1 is positive</td>
+                <td>True</td>
+            </tr>
+            <tr>
+                <td>10 &gt; 0</td>
+                <td>True</td>
+            </tr>
+            <tr>
+                <td>2+2 = 5</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>3 is even</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>Canada is in North America</td>
+                <td>True</td>
+            </tr>
+            <tr>
+                <td>Brazil is in Europe</td>
+                <td>False</td>
+            </tr>
+            </table>
+
+            <p>In logic, we work with <strong>truth values</strong> (True or False) just like mathematics works with numbers. Besides using natural language, English in our case, we can also represent a statement using an expression, a truth table, or a circuit.</p>
+
+            <p>These truth values can also be represented in other forms. One may represent <strong>true</strong> by using the number 1, by stating a light or button is on, or by stating a switch is closed. Also, one may represent <strong>false</strong> by using the number 0, by stating a light or button is off, or by stating a switch is open.</p>
+
+            <p>The <strong>NOT</strong> operator flips the truth value: if a statement is true, NOT makes it false, and if a statement is false, NOT makes it true. For example:</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10", border="1">
+            <tr>
+                <td>1 is not positive</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>10 &le; 0</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>2+2 &ne; 5</td>
+                <td>True</td>
+            </tr>
+            <tr>
+                <td>3 is odd</td>
+                <td>True</td>
+            </tr>
+            <tr>
+                <td>Canada is not in North America</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>Brazil is not in Europe</td>
+                <td>True</td>
+            </tr>
+            </table>
+
+            <p>Considering that <em>p</em> is a variable representing one statement, for example, <em>p</em> means the statement <em>"Alice is tall."</em> The only values <em>p</em> may have is true or false. We can represent the negation of this sentence, i.e., "<em>Alice is not tall,"</em> using the symbol <em>~p</em>.</p>
+
+            <p>We can also represent the NOT operator by creating its <strong>truth table</strong>, which is a table that will represent all possible options for this sentence. Note that in this case we use T to represent true and F to represent false.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>p</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>~p</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">F</td>
+            </tr>
+            </table>
+
+            <p>Finally, another representation of this operator is by drawing its logic gate. In a <strong>circuit</strong>, the inputs, in this case <em>p</em>, enter a gate, being modified by them and generating an output, in this case <em>~p</em>. Therefore, NOT is represented using a <strong>NOT gate</strong>, which has one input and one output and looks like a triangle with a circle at its tip:</p>
+
+            <p style="text-align: center;"><img src="./images/mod01/not.png"></p>
+
+        <hr />
+
+        <h2>Operators</h2>
+
+            <p>The following are the main operators that work on this type of data, along with the NOT operator described above. <em>You don't need to memorize this list; a <a href="./files/FormulaSheet.pdf">formula sheet</a> will be provided to you at all assessments during the course.</em></p>
+
+
+            <h3>OR</h3>
+    
+            <p>The OR operator (also called disjunction) evaluates to true when at least one of the inputs is true. For example, the statement <em>"x is greater than 10 or x is even"</em> evaluates to true when x is 12 (since both requirements have been met), when x is 2 (since the second requirement is met), or when x is 13 (since the first requirement is met). It will be false when x is 3, since no requirement is met.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>(a v b)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">T</td>
+            </tr>
+            </table>
+
+            <p>When representing the OR operator in a circuit, we use the following gate (which looks like a triangle with the sides leading to its point bowed outward and the side facing its inputs bowed inward):</p>
+
+            <p style="text-align: center;"><img src="./images/mod01/or.png"></p>
+
+
+            <h3>AND</h3>
+
+            <p>The AND operator (also called conjunction) evaluates to true only when both inputs are true. For example, the statement <em>"x is greater than 10 and x is even"</em> evaluates to true when x is 12 but evaluates to false when x is 10, since both requirements have to be met. Another way of describing this operation in English is using the word "but."&nbsp;For example, <em>"x is greater than 10, but x is not odd" </em>means the same as <em>"x is greater than 10 and x is even."</em></span></p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>(a ^ b)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">T</td>
+            </tr>
+            </table>
+
+            <p>When representing the AND operator in a circuit, we use the following gate (which looks like a vertical line on the input side and a half circle on the output side):</p>
+
+            <p style="text-align: center;"><img src="./images/mod01/and.png"></p>
+
+
+            <h3>XOR</h3>
+
+            <p>The Exclusive Or (XOR) operator evaluates to true only when exactly one of the inputs is true, but not both. Another way to interpret the XOR gate is to check if the two inputs have different truth values (one is true and the other is false).</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>(a &oplus; b)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">F</td>
+            </tr>
+            </table>
+
+            <p>When representing the XOR operator in a circuit, we use the following gate (which looks like an OR gate with a second parallel arc on its inputs):</p>
+
+            <p style="text-align: center;"><img src="./images/mod01/xor.png"></p>
+
+
+            <h3>NOR</h3>
+
+            <p>The NOR operator is the negation of the OR operator and evaluates to <strong>false </strong>when at least one of the inputs is true.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>~(a v b)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">F</td>
+            </tr>
+            </table>
+
+            <p>When representing the NOR operator in a circuit, we use the following gate (note the small circle added to the OR gate):</p>
+
+            <p style="text-align: center;"><img src="./images/mod01/nor.png"></p>
+
+
+            <h3>NAND</h3>
+
+            <p>The NAND operator is the negation of the AND operator and evaluates to <strong>false </strong>only when both inputs are true.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>~(a ^ b)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">F</td>
+            </tr>
+            </table>
+
+            <p>When representing the NAND operator in a circuit, we use the following gate (note the small circle added to the AND gate):</p>
+
+            <p style="text-align: center;"><img src="./images/mod01/nand.png"></p>
+
+
+            <h3>XNOR</h3>
+
+            <p>The Exclusive Nor (XNOR) operator is the negation of the XOR operator and evaluates to <strong>false </strong>only when exactly one of the inputs is true, but not both. Another way to interpret the XNOR gate is to check if the two inputs have the same truth values (both are true or both are false).</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>~(a &oplus; b)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">T</td>
+            </tr>
+            </table>
+
+            <p>When representing the XNOR operator in a circuit, we use the following gate (note the small circle added to the XOR gate):</p>
+
+            <p style="text-align: center;"><img src="./images/mod01/xnor.png"></p>
+
+        <hr />
+
+        <h2>Expression, Truth Table, and Circuit</h2>
+
+            <p>Logical statements can be represented in three equivalent forms: an expression, a truth table, or a circuit.</p>
+
+            <p>The <strong>expression</strong> form of a statement uses variables (such as p, q, and r) and logical operators (such as v, ^ and ~).</p>
+
+            <p style="font-size: 20px;">((a &xwedge; b) &xvee; c))</p>
+
+            <p>The <strong>truth table</strong> for a given statement will list the outputs for all possible combinations of the inputs' truth values. Note that by default, the first row of a truth table should start with all inputs being false and the last row with all inputs being true.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>c</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>((a ^ b) v c)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">T</td>
+            </tr>
+            </table>
+
+            <p>The <strong>circuit</strong> is the visual layout of a statement using logic gates. Each operation is described by a gate that has inputs connected to its left side and the output on its right side. Each gate's output can be used as an input to another gate, cascading in the same way that expressions can be composed. A wire can come from one input to the circuit or the output of one gate, never more than one. We cannot wire two circuit inputs or gate outputs together directly. Finally, no path along wires and forward through gates in the circuit can loop back on itself.</p>
+
+            <p style="text-align: center;"><img src="./images/mod01/circuit.png"></p>
+
+            <p>Two gates can share the same input; when this happens, the wire is split into two branches, and a small circle is used to indicate the split. For example, in the circuit below, b serves as the input for both the XOR and XNOR gates, so its wire is divided into two, with the split marked by a small circle.</p>
+
+            <p style="text-align: center;"><img style="max-width: 60%; height: auto;" src="./images/mod01/circuit.gif"></p>
+
+            <p>This circuit represents the expression (((a (+) b) ^ ~(b (+) c)) v ~(b (+) c)), and it shows the output for the inputs a = false, b = true, and c = false.</p>
+
+            <p>The order of operators may impact the final truth value; to avoid ambiguity, each operator in an expression has to be described within round brackets (no different brackets are allowed). Furthermore, in this course, we will not allow gates or expressions with three inputs. Therefore, (a v b ^ c) is considered ambiguous and incorrect and should be expressed as either ((a v b) ^ c) or (a v (b ^ c)). Furthermore, (a v b v c) is considered incorrect as well (although not ambiguous) and should be written as either ((a v b) v c) or (a v (b v c)).</p>
+
+        <hr />
+
+        <h2>Logically Equivalent</h2>
+
+            <p>Two statements are called <strong>logically equivalent</strong> if, and only if, they have the same truth table, i.e., they output the same truth values for each possible combination of the truth values of their variables. Therefore, two statements are <strong>not</strong> logically equivalent when there is at least one assignment of truth values to their variables such that the two statements have different truth values. Equivalently, their truth tables differ in at least one row.</p>
+
+            <p>Note that the symbol for logically equivalent is &equiv; and not =. We say two variables are equal if they have the same truth value. For example, <em>p = q,</em> when <em>p</em> represents 10 &gt; 0 and q represents 20 &gt; 10, which has only one truth value possible: both are true.</p>
+
+            <p>Remember that the truth of a statement may depend on the truth values of variables in the statement. So, two statements that are equivalent (have the same truth tables) may not be always-true or always-false in their truth tables. For example, <em>P &equiv; Q</em>, if <em>P</em> means <em>~(a v b)</em> and <em>Q</em> means <em>(~a ^ ~b)</em>.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>~(a v b)</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>(~a ^ ~b)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">F</td>
+                <td style="text-align: center;">F</td>
+            </tr>
+            </table>
+
+            <p>In the same way, two digital logic circuits are equivalent if, and only if, their input/output tables are identical.</p>
+
+            <p>A <strong>tautology</strong> is a statement form that is always true regardless of the truth values of its inputs.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>(~a v a)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">T</td>
+            </tr>
+            </table>
+
+            <p>A <strong>contradiction</strong> is a statement form that is always false regardless of the truth values of its inputs.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>(~a ^ a)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">F</td>
+            </tr>
+            </table>
+
+        <hr />
+
+        <h2>De Morgan's Laws</h2>
+
+            <p>The negation of a statement with an AND operator is logically equivalent to the statement with an OR operator and with each component negated.</p>
+
+            <p style="text-align: center; font-size: 20px;">~(a &xwedge; b) &equiv; (~a &xvee; ~b)</p>
+
+            <p>Furthermore, the negation of a statement with an OR operator is logically equivalent to the statement with an AND operator and with each component negated.</p>
+
+            <p style="text-align: center; font-size: 20px;">~(a &xvee; b) &equiv; (~a &xwedge; ~b)</p>
+
+            <p>Both rules are called <strong>De Morgan's Law;</strong> they state the rules for distributing the not operator inside the brackets when we have only OR/AND operators. One should be really careful when doing this and remember that <em>~(a ^ b) &nequiv; (~ a ^ ~b).</em></span></p>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 2.1 and 2.4</span></p></li>
+                <li><p>4th edition: 2.1 and 2.4</p></li>
+                <li><p>3rd edition: 1.1 and 1.4</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>

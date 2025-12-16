@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 10</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 10: Strong Induction Proofs</h1>
+
+        <h2>Strong Induction</h2>
+
+            <p>Induction proofs are more powerful than they may first appear. In earlier examples, we often saw induction used to prove that if a statement is true for one value, say n-1, then it is true for the next, n. That is called <strong>weak induction</strong>. But this is just one way to apply induction; in fact, induction works for any smaller value, not just the one immediately before.</p>
+
+            <p>In <strong>strong induction</strong>, the inductive hypothesis assumes that the statement is true for all values less than n, and then uses that to prove it is also true for n. This means we're not limited to proving P(n-1) &rarr; P(n); we can prove P(k) &rarr; P(n) for any value of k that is strictly less than n.</p>
+
+            <p>We are also allowed to use more than one of those earlier values at the same time. If the inductive step requires using P(n - 1), P(n - 2), or even P(n/2), we're free to do so, as long as all of those values are strictly smaller than n and within the range of values we've already proved (either by base cases or by induction).</p>
+
+            <p>This flexibility is what makes strong induction so useful. It allows us to tackle problems where each new case depends on several earlier ones, not just the one immediately before it.</p>
+
+            <p>
+                Proving &forall;n &in; &Zopf;<sup>+</sup>, P(n)<br />
+                1. Prove P(1), P(2), ..., P(a) are true<br />
+                2. Prove &forall;n &in; &Zopf;<sup>+</sup>, P(k) &rarr; P(n), where k &lt; n:<br />
+                &nbsp; &nbsp; 2a. Assume P(k) is true for any k &lt; n<br />
+                &nbsp; &nbsp; 2b. Prove P(n) is true
+            </p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>Any integer greater than 1 is divisible by a prime number.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            <span style="text-decoration: underline;">Base Case:</span><br />
+                            P(n=2) is true: 2 is divisible by 2, which is prime<br />
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Hypothesis:</span><br />
+                            Assume any integer k &lt; n is divisible by a prime number<br />
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Step:</span><br />
+                            Consider an unspecified integer n &gt; 1</p>
+                            <p>
+                                Case 1: n is prime<br />
+                                Since n is prime and all numbers are divisible by themselves, n is divisible by a prime number.
+                            </p>
+                            <p>
+                                Case 2: n is not prime<br />
+                                Since n is not prime, then there are two integers, a and b, such that n = a*b, such that 1 &lt; a &lt; n and 1 &lt; b &lt; n.<br />
+                                Since a &lt; n, by IH a is divisible by a prime.<br />
+                                Since a is a factor of n, and a is divisible by a prime, then n is also divisible by a prime.
+                            </p>
+                            <p>Therefore, by mathematical induction, any integer greater than 1 is divisible by a prime number.</p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>In this proof, we use two cases to simplify our reasoning. Case analysis is a flexible tool in mathematics; it can be used in any part of a proof, including within the inductive step. Here, we divide our proof into two cases: when n is prime and when n is not prime. We chose these cases because one is straightforward, and the other naturally leads us to apply a known definition.</p>
+                        <p>When n is not prime (that is, composite), we can use the definition of a composite number. This definition tells us that n can be written as the product of two integers, a and b, both strictly less than n. This condition is key because it allows us to apply the inductive hypothesis (IH) to both a and b, since the IH applies to all integers smaller than n.</p>
+                        <p>Even though in this particular proof we only need to use the IH once, it's perfectly valid to apply it multiple times if the situation requires it. The important point is that we don't need to know the exact values of a and b; it's enough to know that they are both smaller than n. That alone gives us permission to apply the IH and complete the reasoning.</p>
+                        <p>This strategy of splitting the proof into cases and using the structure of known definitions helps us break the problem into manageable parts and apply inductive reasoning effectively.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <p>In <strong>weak induction</strong>, the difference between the inductive hypothesis (IH) and the inductive step (IS) is always 1. For example, assuming the statement holds for n and proving it for n + 1, or assuming it holds for n &minus; 1 and proving it for n.</p>
+
+            <p>In <strong>strong induction</strong>, however, the inductive hypothesis assumes the statement holds for all numbers smaller than n, and the inductive step proves it for n. Alternatively, you can assume it holds for all numbers less than or equal to n in the IH and then prove it for n + 1 in the IS.</p>
+
+        <hr />
+
+        <h2>Sequence of Implication</h2>
+
+            <p>We can think of an induction proof as building a chain of logical implications. Suppose we want to prove that a certain statement P(n) is true for all positive integers n. In a standard induction proof, we prove two things: that P(1) is true, and that if P(n &minus; 1) is true, then P(n) is also true.</p>
+
+            <p>What we are really doing is showing a chain like this:</p>
+
+            <p>P(1) &rarr; P(2) &rarr; P(3) &rarr; P(4) &rarr; P(5) &rarr; ...</p>
+
+            <p>If all the implications in this chain are true, and we know that the very first statement P(1) is true, then it follows that all statements after it must also be true. For example, since P(1) is true and P(1) &rarr; P(2) is true, then P(2) must be true. So, since P(2) is true and P(2) &rarr; P(3) is true, then P(3) is true, and so on. This is why the base case is so important, it's what starts the chain, since we can have the implications being true when both the hypothesis and the conclusion are false.</p>
+
+            <p>Now let's consider a strong induction proof, where instead of assuming just P(n-1), we assume that several previous values are true. For example, suppose we assume that P(n &minus; 3) is true in order to prove P(n). This changes the implication structure dramatically.</span></p>
+
+            <p>Instead of one continuous chain, we now have several parallel chains, like this:</p>
+
+            <p>
+                P(1) &rarr; P(4) &rarr; P(7) &rarr; P(10) &rarr; ...<br />
+                P(2) &rarr; P(5) &rarr; P(8) &rarr; P(11) &rarr; ...<br />
+                P(3) &rarr; P(6) &rarr; P(9) &rarr; P(12) &rarr; ...
+            </p>
+
+            <p>Each of these chains progresses by adding 3 to the previous value. But here's the key point: if we only prove P(1) in the base case, we&rsquo;re only activating the first chain. The other two chains (starting with P(2) and P(3)) are still inactive. And since the implication F &rarr; F is considered logically true, those chains don't help us unless we also know their first term is true.</p>
+
+            <p>So, to make sure all values of n are covered in our proof, we need to include more values in the base case. In this example, we must prove P(1), P(2), and P(3) in the base case. Once all three chains are started, the implication structure guarantees that every positive integer will eventually be proven.</p>
+
+            <p>This is why strong induction often requires more base cases than weak induction. It depends on how far back the inductive step looks. Without the right base cases, the logic might only apply to a subset of the integers, not all of them.</p>
+
+        <hr />
+
+        <h2>Recurrence Relations</h2>
+
+            <p>A <strong>recurrence relation</strong> is a rule that defines each term of a sequence based on one or more previous terms. To fully determine a sequence from such a rule, we also need some initial values, also known as boundary conditions, just like how a recursive function and an induction proof needs a base case.</p>
+
+            <p>A well-known example is the Fibonacci sequence, where each term is the sum of the two terms before it. The recurrence relation is: a<sub>n</sub> = a<sub>n-1</sub> + a<sub>n-2</sub>. However, to start generating values from this rule, we need to define the first two terms. For instance, we might set: a<sub>0</sub> = 1 and a<sub>1</sub> = 1. Without these, the rule would reference terms like a₋₁, which aren't defined.</p>
+
+            <p>In recurrence relations, especially those involving division, we often use floor or ceiling functions to ensure that the index remains an integer. Since dividing two integers doesn't always result in an integer. Taking the floor or ceiling of the result helps us stay within valid index positions in the sequence. This is crucial, since sequence terms are only defined for integer positions.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>Consider the relation:</p>
+                        <p>
+                            a<sub>1</sub> = 0<br />
+                            a<sub>2</sub> = 2<br />
+                            a<sub>3</sub> = 4<br />
+                            a<sub>n</sub> = 3a<sub>&lfloor;n/3&rfloor;</sub> + 2 for integer n &gt; 3</p>
+                        <p>For any positive integer n, a<sub>n</sub> is even.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            <span style="text-decoration: underline;">Base Case:</span><br />
+                            P(n=1) is true: a<sub>1</sub> = 0 and 0 is even<br />
+                            P(n=2) is true: a<sub>2</sub> = 2 and 2 is even<br />
+                            P(n=3) is true: a<sub>3</sub> = 4 and 4 is even<br />
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Hypothesis:</span><br />
+                            Assume a<sub>k<sup> </sup></sub>is even for any k &lt; n.<br />
+                        </p>
+                        <p>
+                            <span style="text-decoration: underline;">Induction Step:</span><br />
+                            Consider an unspecified integer n &gt; 3<br />
+                            a<sub>n</sub> = 3a<sub>&lfloor;n/3&rfloor;</sub> + 2<br />
+                            Since <sub>&lfloor;n/3&rfloor;</sub> &lt; n, by IH a<sub>&lfloor;n/3&rfloor;</sub> is even, so a<sub>&lfloor;n/3&rfloor;</sub> =2c for some integer c<br />
+                            Therefore, a<sub>n</sub> = 3(2c) + 2 = 6k + 2 = 2(3c+1)<br />Since the sum and the product of integers is an integer, then b = 3c+1 is an integer<br />Hence, a<sub>n</sub> = 2b is even
+                        </p>
+                        <p>Therefore, by mathematical induction, for any positive integer n, any term of this relation is even.</p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>This recurrence clearly calls for a strong induction proof. We can tell because each term a<sub>n</sub> is defined in terms of a<sub>&lfloor;n/3&rfloor;</sub>, meaning that to prove a statement about aₙ, we need information about smaller values, not just a<sub>n-1</sub>, but potentially any value less than n.</p>
+                        <p>Let's begin by examining the inductive hypothesis (IH). We assume that the statement is true for all values smaller than n. Specifically, we assume that a<sub>k</sub> is even for every integer k &lt; n. Then, in our inductive step (IS), we use this assumption to prove that a<sub>n</sub> is also even.</p>
+                        <p>To do this, we first use the recurrence definition. This is an important moment to be careful about what we assume and what we&rsquo;re trying to prove. In this case, we want to prove that aₙ is even, and we&rsquo;re allowed to use the recurrence: aₙ = 3a<sub>&lfloor;n/3&rfloor;</sub> + 2. This recurrence shows that aₙ depends on a<sub>&lfloor;n/3&rfloor;</sub>. Since <sub>&lfloor;n/3&rfloor;</sub> &lt; n, the value a<sub>&lfloor;n/3&rfloor;</sub> is covered by our inductive hypothesis, which means it&rsquo;s even. That allows us to write a<sub>&lfloor;n/3&rfloor;</sub> = 2c for some integer c and conclude that aₙ is also even after some algebraic manipulations, completing the inductive step, but only for values of n where all parts of this argument are valid.</p>
+                        <p>Now let's examine the base cases, which are essential for any induction proof. We always need to start from the smallest value of n allowed by the problem; in this case, n = 1. However, we can't stop there. We need to check whether our inductive step works for each value just above the base. If it fails for any of them, we need to add that value to the base case.</p>
+                        <p>Start with n = 2. If we try to use the recurrence for n = 2, we get a<sub>2</sub> = 3a<sub>&lfloor;2/3&rfloor;</sub> + 2 = 3a₀ + 2, since &lfloor;2/3&rfloor; = 0. But a<sub>0</sub> isn't defined; our proof starts at n = 1, so this value is invalid. That means n = 2 must be included in the base case, since the inductive step doesn't apply.</p>
+                        <p>Now try n = 3. Here, &lfloor;n/3&rfloor; = &lfloor;3/3&rfloor; = 1, which is valid and part of our IH. But we must also check whether the recurrence aₙ = 3<sub>&lfloor;n/3&rfloor;</sub> + 2 is defined for this value. Looking at the recurrence, it seems it only applies for n &gt; 3, not for n = 3 itself. So we must also include n = 3 in the base case.</p>
+                        <p>Now try n = 4. In this case, &lfloor;n/3&rfloor; = &lfloor;4/3&rfloor; = 1, which is valid. The recurrence is also defined for n = 4, since 4 &gt; 3. So the inductive step works from this point onward.</p>
+                        <p>Therefore, our final base case needs to include n = 1, n = 2, and n = 3. Only from n = 4 forward can the inductive step be applied safely.</p>
+                        <p>Although base cases are typically written before the inductive step in a formal proof, we often don't know how many are needed until we analyze the behavior of the recurrence and determine where the inductive step first becomes valid.</p>
+                    </td>
+                </tr>
+            </table>
+
+        <p>&nbsp;</p>
+
+        <hr />
+
+        <h2>Number of Base Cases</h2>
+
+            <p>An induction proof always has at least one base case. The smallest valid value must appear as a base case, but additional values may also be required to ensure the proof is correct. To determine which values are needed, you must first complete the inductive step and then check whether all the values used in your inductive hypothesis are valid.</p>
+
+            <p>For example, suppose you are proving P(n) for all positive integers. The first base case will naturally be n=1. After finishing your inductive step, you must check the values for which you invoked the inductive hypothesis. If, for instance, your inductive step uses the hypothesis at n &minus; 3, then the proof will not work for n=2, because 2 &minus; 3 = &minus; 1, which is not a valid positive integer. Therefore, n=2 must be added as a base case.</p>
+
+            <p>Next, you test n=3. Since 3 &minus; 3=0, and 0 is also not a positive integer, the inductive step does not work for n=3, so n=3 must be added as well. Finally, testing n=4 gives 4 &minus; 3=1, which is a valid positive integer. Thus, the inductive step works for n=4, and it does not need to be included as a base case.</p>
+
+            <p>Therefore, since the inductive hypothesis was used with k = n &minus; 3, the proof requires n=1, n=2, and n=3 as base cases.</p>
+
+            <p>It is important to check each part of your inductive step to ensure it works for every number that is not included as a base case. If the step fails for some value, that value must be added as an additional base case.</p>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 5.4</span></p></li>
+                <li><p>4th edition: 5.4</p></li>
+                <li><p>3rd edition: 4.4</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>

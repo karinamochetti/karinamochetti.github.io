@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 08</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 08: Indirect Proofs</h1>
+
+        <h2>Indirect Proof: Contrapositive</h2>
+
+            <p>An indirect proof allows us to establish the truth of a statement by proving a logically equivalent reformulation. One common technique is the contrapositive proof. This approach begins by rewriting an implication of the form P(x) &rarr; Q(x) into its contrapositive: ~Q(x) &rarr; ~P(x). The quantifiers and variables remain unchanged; only the predicate expressions are transformed. Note that this is just applying our logical equivalence rule p &rarr; q &equiv; ~q &rarr; ~p. As always, we can replace a subexpression with a logically equivalent one.</p>
+
+            <p>To carry out a contrapositive proof, first state that this method is being used, then restate the original implication in contrapositive form. From there, proceed with a direct proof of the contrapositive. Remember that the negation of the original conclusion becomes the new assumption, and the negation of the original hypothesis becomes the goal to prove. All rules of direct proof still apply.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>For any two integers x and y, if x*y is even, then x or y is even.</p>
+                    </td>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            We prove this by contrapositive: For any two integers x and y, if x and y are odd, then x*y is odd.<br />
+                            Consider two unspecified integers, x and y.<br />
+                            Assume x is odd, then x = 2a+1 for some integer a.<br />
+                            Assume y is odd, then y = 2b+1 for some integer b.<br />
+                            Multiplying x and y we have:<br />
+                            x * y = (2a + 1) * (2b + 1) = 4ab + 2a + 2b + 1 = 2(2ab + a + b) + 1<br />
+                            Since the sum and product of integers is an integer, k = 2ab + a + b is an integer.<br />
+                            Therefore, x * y = 2k + 1, for some integer k.<br />
+                            Hence, x * y = 2k is odd.
+                        </p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>Notice that the original form of this statement is hard to prove directly. We know that x * y = 2k for some integer k (since the product is even), but it's not clear how to proceed from there. Trying to define k = (x * y) / 2 introduces a division that might not result in an integer, which makes the argument harder to manage.</p>
+                        <p>Also, the conclusion involves an OR: either x is even or y is even. This adds complexity. Which one is even? Maybe both, maybe only one. But remember, an OR statement is true if at least one part is true. So, focusing on just one side might not help and could even lead to a false trail.</p>
+                        <p>All of this suggests that an indirect proof is a better approach. Specifically, we can use the contrapositive, which is logically equivalent to the original statement but often easier to prove. The contrapositive of "If x * y is even, then x is even or y is even" is "If x and y are both odd, then x * y is odd." Not only is our assumption now better, making statements about the individual variables, not the product, but due to De Morgan's law, the OR operator is now an AND operator. Sometimes it can be tricky to take the contrapositive of an English statement. You may find ithelpful to convert partly or completely into logic to help you take the contrapositive.</p>
+                        <p>This version is much easier to prove directly. We can use the definition of odd numbers:<br />Let x = 2a + 1 and y = 2b + 1 for some integers a and b. Then compute x * y, and show that the result is also of the form 2k + 1, which means it's odd.</p>
+                    </td>
+                </tr>
+            </table>
+
+        <p>&nbsp;</p>
+
+        <hr />
+
+        <h2>Indirect Proof: Contradiction</h2>
+
+            <p>Another form of indirect proof is proof by contradiction. This method involves assuming the negation of the entire statement, including its quantifiers, and showing that this assumption leads to a logical contradiction. If a contradiction arises, the original statement must be true. This proof works from the negation of the theorem statement to an inherently false statement (contradiction). Do not try to use or assume the original theorem!</p>
+
+            <p>To apply this technique, negate the original statement completely. Recall that the negation of a universal quantifier is an existential quantifier, and vice versa. Use logical equivalences to simplify complex negations. The contradiction reached should not rely on a rewording of the conclusion but rather lead to something demonstrably false. For example, to prove &forall;x &in; D, &exist;y &in; D, P(x) &xwedge; Q(y) using a contradiction, we would negate it and assume &exist;x &in; D, &forall;y &in; D, ~P(x) &xvee; ~Q(y) using De Morgan's.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>
+                            &radic;<span style="border-top: 1px solid black;">2</span> is irrational<br />
+                            <em>Hint: the square of an even number is even.</em>
+                        </p>
+                    </td>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                            <p>
+                                We prove this by contradiction: Assume &radic;<span style="border-top: 1px solid black;">2</span> is rational<br />
+                                Since &radic;<span style="border-top: 1px solid black;">2</span> is rational, it can be written as a fraction of two integers, x and y, where x and y have no common factor and y &ne; 0.<br />
+                                So &radic;<span style="border-top: 1px solid black;">2</span> = x/y<br />
+                                &nbsp; &nbsp; &nbsp; 2 = x<sup>2</sup>/y<sup>2</sup><br />&nbsp; &nbsp; &nbsp; 2y<sup>2</sup> = x<sup>2</sup><br />
+                                Therefore, x<sup>2 </sup>is even.<br />
+                                By the hint, since x<sup>2 </sup>is even, then x is even.<br />
+                                So, x = 2a, for some integer a.<br />
+                                Then, 2y<sup>2</sup> = x<sup>2</sup>= (2a)<sup>2 </sup>= 4a<sup>2</sup> = 2(2a<sup>2</sup>)<br />
+                                Therefore, y<sup>2</sup> = 2a<sup>2</sup><br />
+                                Since the product of integers is an integer, a<sup>2</sup> = b for some integer b.<br />
+                                Hence, y<sup>2</sup> = 2b, and y<sup>2</sup> is even.<br />
+                                By the hint, since y<sup>2 </sup>is even, then y is even.<br />
+                                Since x and y are both even, they have 2 as a common factor, which contradicts our original assumption.
+                            </p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>This problem is very simple on the surface, but that simplicity limits our options. We can't make any strong assumptions, and we don't have a concrete definition of "irrational" to work with; we only know it means "not rational." That doesn't give us much to directly build on. Using cases doesn't help either; there's no general variable ranging over all integers that we can divide or test in different situations.</p>
+                        <p>Because of that, using indirect proof is the best strategy here. Specifically, we'll use proof by contradiction. We assume the opposite of what we want to prove: that the number in question is rational. Now we have a precise definition to work with: a rational number can be written as a reduced fraction x/y, where x and y are integers with no common factor (other than 1), and y is not 0.</p>
+                        <p>This assumption becomes the starting point of our proof. Our goal is to show that this assumption leads to something impossible, a contradiction. The contradiction doesn't have to directly oppose the original claim (irrationality); it just needs to clash with<br />something else we have assumed or derived.</p>
+                        <p>The hint in the problem suggests a useful direction: try to simplify the expression by squaring it. This often helps when square roots are involved. Doing so might lead us to conclude that both x and y must be even. At first glance, that doesn't seem contradictory, but it actually is. If both x and y are even, then they share a common factor of 2, which contradicts our original assumption that the fraction is in lowest terms.</p>
+                        <p>This contradiction means our assumption that the number is rational must be false. Therefore, the number is irrational.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <p>Note that although we may have an existential quantifier after the negation, we cannot pick values for the variables. First, because a contradiction proof is not followed by a direct proof, we are not trying to get to the conclusion; we are trying to get to something false. Second, because those values do not exist! This is because we are not trying to prove the negated conclusion, we are assuming it. When we assume an existential, we know it is true for some value, but we do not know which one. Be careful to recognize that your negated conclusion is an assumption, not a theorem you're trying to prove.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>For any two integers x and y, if x*y is even, then x or y is even.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                            <p>
+                                We prove this by contradiction: Assume there are two integers x and y, such that x*y is even, and x and y are odd.<br />
+                                Consider the odd integer x, where x = 2a+1 for some integer a.<br />
+                                Consider the odd integer y, where y = 2b+1 for some integer b.<br />
+                                Consider x*y is even.<br />
+                                Multiplying x and y we have:<br />
+                                x * y = (2a + 1) * (2b + 1) = 4ab + 2a + 2b + 1 = 2(2ab + a + b) + 1<br />
+                                Since the sum and product of integers is an integer, k = 2ab + a + b is an integer.<br />
+                                Therefore, x * y = 2k + 1, for some integer k.<br />
+                                Hence, x * y = 2k is odd, but we assumed it to be even; therefore, we have a contradiction.<br />
+                            </p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>In this case, one might be tempted to choose specific values for x and y, since our assumption (in a proof by contradiction) uses existential quantifiers; we're assuming there exist two integers x and y such that x * y is even, but both x and y are odd. But do such numbers actually exist? Can two odd integers multiply to give an even product?</p>
+                        <p>The answer is no. And that's exactly the point. Such a pair of numbers cannot exist, because the statement is false. And that's the core idea of a contradiction: we assume something that leads to a false conclusion, proving that the assumption must be wrong.</p>
+                        <p>Also, notice how the algebraic steps in this contradiction proof are almost identical to those in the contrapositive version. This is common; a proof by contrapositive and a proof by contradiction often look very similar in structure and reasoning. The main difference is in the logical framing: contradiction assumes the original statement is true and then denies the conclusion, while contrapositive directly proves an equivalent but logically reversed version of the original statement.</p>
+                    </td>
+                </tr>
+            </table>
+
+        <p>&nbsp;</p>
+
+        <hr />
+
+        <h2>Hints</h2>
+
+            <ul>
+                <li>Always attempt a direct proof first, as it is often simpler.</li>
+                <li>Try an indirect proof when the negation leads to a more manageable expression (e.g., making irrational numbers appear rational).</li>
+                <li>For a direct proof, the final step is your conclusion that matches the original statement.</li>
+                <li>For an indirect proof with contrapositive, the last step is your conclusion in the contrapositive statement that matches the negation of the hypothesis of the original statement. Remember that a contrapositive is always followed by a direct proof.</li>
+                <li>For an indirect proof with contradiction, the last step is an absurdity, something false. In this proof, you should assume the negation of your statement in the first steps and conclude something false. It is never followed by a direct proof.</li>
+                <li>Sometimes after completing an indirect proof, you can also use the insight you gained from completing that proof start over and write a clearer, simpler direct proof.</li>
+            </ul>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 4.7 and 4.8</span></p></li>
+                <li><p>4th edition: 4.6 and 4.7</p></li>
+                <li><p>3rd edition: 3.6 and 3.7</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>

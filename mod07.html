@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 07</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 07: Direct Proofs</h1>
+
+        <h2>Instantiation and Generalization</h2>
+
+            <h3>Universal Instantiation</h3>
+
+            <p>When a property P holds for all elements in a set, it must also hold for any particular element in that set.<br />Example:</p>
+
+            <p>
+                &nbsp; &nbsp; Universal statement: All dogs are cute.<br />
+                &nbsp; &nbsp; Assumption: Ozzy is a dog.<br />
+                &nbsp; &nbsp; Conclusion: Ozzy is cute.
+            </p>
+
+            <p>In other words, if we know (or assume) a universally quantified statement, we know a lot: we know the statement is true for every single element of the quantifiers domain.<br /><br /></p>
+
+            <h3>Universal Generalization</h3>
+
+            <p>If x represents an arbitrary element in a set and P(x) is shown to be true, then P is true for every element in the set.<br />Example:</p>
+
+            <p>
+                &nbsp; &nbsp; Assumption: Let x be an unspecified dog.<br />
+                &nbsp; &nbsp; Proof: x is cute.<br />
+                &nbsp; &nbsp; Conclusion: All dogs are cute (since x represents any dog).
+            </p>
+
+            <p>Unlike knowing a universal (as with universal instantiation), proving a universal using Universal Generalization requires you not to assume much about the element you're writing the proof over. You cannot know anything about the element that isn't also true of every single element in the domain.<br /><br /></p>
+
+            <h3>Existential Instantiation</h3>
+
+            <p>If a property P is known to hold for at least one element in a set, we can refer to that element by name in our proof.<br />Example:</p>
+
+            <p>
+                &nbsp; &nbsp; Premise: There is a dog that is cute.<br />
+                &nbsp; &nbsp; Assumption: Let x be that dog.<br />
+                &nbsp; &nbsp; Conclusion: x is cute.
+            </p>
+
+            <p>Existential instantiation is just a convenient way to give a name the element of the domain that has a property, when we don't know which one it is. It is essentially a shorthand for the original existential statement.<br /><br /></p>
+
+            <h3>Existential Generalization</h3>
+
+            <p>This technique is used when we assume a particular object and then conclude that something exists with that property.<br />Example:</p>
+
+            <p>
+                &nbsp; &nbsp; Assumption: Ozzy is a dog.<br />
+                &nbsp; &nbsp; Proof: Ozzy is cute.<br />
+                &nbsp; &nbsp; Conclusion: There is a dog that is cute.
+            </p>
+
+            <p>Here we are proving an existential. Proving an existential using Existential Instantiation doesn't require much evidence; proving the property for any element we choose in the domain will work.<br /><br /></p>
+
+        <hr />
+
+        <h2>Direct Proof: Existential Quantifiers</h2>
+
+            <p>A statement involving an existential quantifier: &exist;x &in; D, P(x), is true if there is at least one value of x that makes P(x) true. To prove such a statement, it suffices to provide a single example that satisfies the condition. We do not need to identify all possible values, just one is enough. This method typically uses existential generalization.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>There is an odd integer that can be written as the sum of three prime numbers.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            Choose an integer x = 15.<br />
+                            Since x can be written as 2k+1 for an integer k=7, 15 = 2*7+1, x is odd.<br />
+                            Also, x can be written as a sum of three primes: 15 = 3 + 5 + 7.
+                        </p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                    <p>In this proof, we only need to choose a single example of an odd number that satisfies the given properties, that is, an odd integer that can be expressed as the sum of three prime numbers. The number 15 was used in the proof, but many other valid examples exist. For instance, 13 can also be written as the sum of three primes: 13 = 5 + 5 + 3. Any such example is equally valid for demonstrating the claim.</p>
+                    </td>
+                </tr>
+            </table>
+
+        <p>&nbsp;</p>
+
+        <hr />
+
+        <h2>Direct Proof: Universal Quantifiers</h2>
+
+            <p>A universally quantified statement &forall;x &in; D, P(x) asserts that a property P(x) holds for all x in a domain D. If D is small, we might verify the statement by checking every case. But when D is large or infinite, we rely on universal generalization. This involves letting x represent an arbitrary element of the domain and proving P(x) under that assumption. It's critical to begin by stating that x is unspecified, meaning it could be any element of the domain. This sets the stage for a general argument; therefore, statements with universal quantifiers do not rely on examples or values. From there, we build a logical sequence that demonstrates P(x) holds without using any specific properties of x.</span></p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>For all integers n, n<sup>2</sup> - n&nbsp;is even.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>Consider an unspecified integer n.<br />
+                            Note that n<sup>2</sup> - n = n(n-1).<br />
+                            Note that n(n &minus; 1) is the product of two consecutive integers.<br />
+                            Consecutive integers are never both odd or both even; one is always even.<br />
+                            That means the value n(n-1) is a product of an odd number with an even number.<br />
+                            Assume without loss of generality that n = 2a and n-1 = 2b+1 for some integers a and b.<br />
+                            Then n<sup>2</sup> - n = 2a(2a-1) = 4a<sup>2</sup> - 2a = 2 (2a<sup>2</sup>-a).<br />
+                            Since a and 2 are integers and the sum and product of integers is an integer, then k = 2a<sup>2</sup>-a is an integer.<br />
+                            Hence, n<sup>2</sup> - n = 2k is even.
+                        </p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>In this proof, we start by rewriting the expression as n (n - 1), which represents the product of two consecutive integers. Now, we can use our knowledge about consecutive integers: they cannot be both odd or both even, so one of them is always even. This means their product is always even.</p>
+                        <p>We assume that n is even, but assuming that n-1 is even would follow the same logic, so we write that we can make this assumption without loss of generality. Using the definition of even, we can replace 2a for the value of n in our original expression to check that it will result in an integer times 2, therefore an even.</p>
+                        <p>Note how it is important that a and 2 are integers, because otherwise the value 4a<sup>2</sup> - 2a may be odd; for example, if a = (1+ &radic;<span style="border-top: 1px solid black;">5</span>/<sub>4</sub>, then </p>
+                        <p>
+                            4a<sup>2</sup> - 2a = <br />
+                            4((5 + 2&radic;<span style="border-top: 1px solid black;">5</span> + 1)/<sub>16</sub>) - 2((&radic;<span style="border-top: 1px solid black;">5</span> + 1)/<sub>4</sub>) = <br />
+                            (6 + 2&radic;<span style="border-top: 1px solid black;">5</span>)/<sub>4</sub> - (&radic;<span style="border-top: 1px solid black;">5</span>+1)/<sub>2</sub> = <br />
+                            (6 + 2&radic;<span style="border-top: 1px solid black;">5</span> - 2&radic;<span style="border-top: 1px solid black;">5</span> - 2)/<sub>4</sub> = <br />
+                            4/<sub>4</sub> =<br /> 
+                            1
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+            <p>Sometimes, it's helpful to divide a proof into distinct cases, as long as the cases collectively cover the entire domain. For instance, "even" and "odd" together span all integers; "positive", "negative", and "zero" span all real numbers. Within each case, new assumptions are allowed, making proofs more manageable.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>For all integers n, n<sup>2</sup> + 3n + 1 is odd.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>Consider an unspecified integer n.</p>
+                        <p>Case 1: Suppose n is even.<br />
+                            Since n is even, n = 2k for some integer k.<br />
+                            So, n<sup>2</sup> + 3n + 1 = (2k)<sup>2</sup> + 3(2k) + 1 = 4k<sup>2</sup> + 6k + 1 = 2(2k<sup>2</sup>+ 3k) + 1.<br />
+                            Since the sum and the product of integers is an integer, c = (2k<sup>2&nbsp;</sup>+ 3k) is an integer.<br />
+                            Therefore, n<sup>2</sup> + 3n + 1 = 2c + 1 for some integer c.<br />
+                            Hence, n<sup>2</sup> + 3n + 1 is odd.
+                        </p>
+                        <p>Case 2: Suppose n is odd.<br />
+                            Since n is odd, n = 2k+1 for some integer k.<br />
+                            So, n<sup>2</sup> + 3n + 1 = (2k+1)<sup>2</sup> + 3(2k+1) + 1 = 4k<sup>2</sup> + 4k + 1 + 6k + 3 + 1 = 4k<sup>2</sup> + 10k + 5.<br />
+                            And, 4k<sup>2</sup> + 10k + 5 = 4k<sup>2</sup> + 10k + 4 + 1 = 2(2k<sup>2</sup> + 5k + 2) + 1.<br />
+                            Since the sum and the product of integers is an integer, c = (2k<sup>2</sup> + 5k + 2) is an integer.<br />
+                            Therefore, n<sup>2</sup> + 3n + 1 = 2c + 1 for some integer c.<br />
+                            Hence, n<sup>2</sup> + 3n + 1&nbsp;is odd.
+                        </p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>In this proof, our goal is to show that for all integers n, the expression n<sup>2</sup> + 3n + 1 is always odd. Notice that we cannot assume any information about n beyond that it is an integer. Also, we cannot assume that the expression n<sup>2</sup> + 3n + 1 is odd, because that's exactly what we are trying to prove.</p>
+                        <p>A good strategy in such cases is to use a proof by cases. This allows us to rely on extra information based on the possible types of integers n can be. Since we are dealing with parity (odd or even), it's natural to divide the proof into two cases: n is even and n is odd.</p>
+                        <p>This way, we can use the definitions of even and odd numbers to substitute for n in each case. Then, in each case, we simplify the expression n<sup>2</sup> + 3n + 1 and try to show that the result is of the form 2c+1, where c is an integer. This form matches the definition of an odd number, so if we can reach this form in both cases, the expression is guaranteed to be odd for all integers n.</p>
+                        <p>This case-based approach gives us a clear path to follow and allows us to rigorously prove the statement using simple algebra.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <p><span>Mathematical statements often imply something, even if they are not written with "if ... then". For example, "All even integers are divisible by 2" means "If x is an even integer, then x is divisible by 2". To prove a universally quantified implication &forall;x &in; D, P(x) &rarr; Q(x) we only need to consider the case where P(x) is true. If P(x) is false, the implication is automatically true and doesn't require proof. So, if proving something about even integers, you start by assuming the number is even and focus only on that case.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>The sum of any two odd integers is even.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            Consider two unspecified integers, x and y.<br />
+                            Assume x is odd, so there is an integer a such that x = 2a+1.<br />
+                            Assume y is odd, so there is an integer b such that y = 2b+1.<br />
+                            Therefore, x+y = (2a+1) + (2b+1) = 2a + 2b + 2 = 2 (a+b+1).<br />
+                            Since the sum of integers is an integer, and a, b, and 1 are integers, then (a+b+1)=k is an integer.<br />
+                            So x+y = 2k, for an integer k, and x+y is even.
+                        </p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>This problem includes a hidden "if...then" statement, even though it's not written that way. We can rewrite it more clearly as: "For all integers x and y, if both are odd, then their sum is even."</p>
+                        <p>Now that we've made the implication clear, we know what we're allowed to assume (that x and y are odd), and what we need to prove (that their sum is even).</p>
+                    </td>
+                </tr>
+            </table>
+
+        <p>&nbsp;</p>
+
+        <hr />
+
+        <h2>Direct Proof: Nested Quantifiers</h2>
+
+            <p>Statements with multiple, mixed quantifiers require that each variable be defined according to its quantifier, in order from left to right. When assigning values, you can pick constants or expressions involving previously defined variables.</p>
+
+            <p>&exist;a &in; &Zopf;, &forall;b &in; &Zopf;, &exist;c &in; &Zopf;, &forall;d &in; &Zopf;, &forall;e &in; &Zopf;, &exist;f &in; &Zopf;, P(a,b,c,d,e,f)</p>
+
+            <ul>
+                <li>Choose an integer value for a.</li>
+                <li>Consider an unspecified integer b.</li>
+                <li>Choose an integer value for c: that value can be a specific integer, such as 2, or dependent on previous values, such as 2+a or 2b+a.</li>
+                <li>Consider an unspecified integer d.</li>
+                <li>Consider an unspecified integer e.</li>
+                <li>Choose an integer value for f: that value can be a specific integer, such as 2, or dependent on previous values, such as a+b+c+d+e.</li>
+            </ul>
+
+            <p>Once all variables are defined and assumptions are clear, the proof proceeds as usual. Each step must be small and logically justified. Crucially, never assume the conclusion within the proof; it must only appear at the end.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>For all integers n, there exists an integer m such that m<sup>2</sup> = n<sup>4</sup> + 2n<sup>2</sup> + 1.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            Consider an unspecified integer n.<br />
+                            Chose an integer m = n<sup>2</sup> + 1.<br />
+                            Then, m<sup>2</sup> = (n<sup>2</sup> + 1)<sup>2 </sup>= n<sup>4</sup> + 2n<sup>2</sup> + 1.<br />
+                            Hence, m<sup>2</sup> = n<sup>4</sup> + 2n<sup>2</sup> + 1.
+                        </p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>In cases involving nested quantifiers, it's important to pay close attention to the order in which the quantifiers appear. Often, we can choose values strategically to make the proof easier.</p>
+                        <p>In this case, we want to show that the square of some integer m is equal to the expression n<sup>4</sup> + 2n<sup>2</sup> + 1. To simplify the proof, we should try factoring this expression to see if it can be written as a square. Indeed, we find that: n<sup>4</sup> + 2n<sup>2</sup> + 1 = (n<sup>2</sup> + 1)<sup>2</sup>. This tells us that the square of n<sup>2</sup> + 1 is exactly the expression we are trying to match. So, for each integer n, we can choose m = n<sup>2</sup> + 1. This makes the proof straightforward.</p>
+                        <p>Note that the process of finding this value for m is part of your scratch work or thinking process, it doesn't appear explicitly in the formal proof. Still, being able to choose a value (like we do for m here) is a powerful tool in proofs involving existential quantifiers. You have the freedom to select the value that makes the statement true, so take advantage of that and explore options until you find the one that works.</p>
+                        <p>Note: This would not hold if the quantifiers were reversed, i.e., if we were asked to prove there exists an m such that for all n, m<sup>2</sup> = n<sup>4</sup> + 2n<sup>2</sup> + 1. That version is false because m would have to work for all n, which is not possible.</p>
+                    </td>
+                </tr>
+            </table>
+
+        <p>&nbsp;</p>
+
+        <hr />
+
+        <h2>Common Definitions</h2>
+
+            <table style="border-collapse: collapse;" cellpadding="10", border="1">
+                <tr>
+                    <td><strong>Even</strong></td>
+                    <td>x is even, iff x = 2k for some integer k</td>
+                </tr>
+                <tr>
+                    <td><strong>Odd</strong></td>
+                    <td>x is odd, iff x = 2k+1 for some integer k</td>
+                </tr>
+                <tr>
+                    <td><strong>Divisible</strong></td>
+                    <td>a divides b, iff b = ak for some integer k</td>
+                </tr>
+                <tr>
+                    <td><strong>Rational</strong></td>
+                    <td>x is rational, iff x = a/b for some integers a and b, where b is not 0.</td>
+                </tr>
+                <tr>
+                    <td><strong>Perfect Square</strong></td>
+                    <td>x is a perfect square, iff x = k<sup>2</sup> for some integer k</td>
+                </tr>
+                <tr>
+                    <td><strong>Non-Prime (Composite)</strong></td>
+                    <td>x is not a prime, iff x = ab for two integers a and b greater than 1, and smaller than x</td>
+                </tr>
+            </table>
+
+        <p>&nbsp;</p>
+
+        <hr />
+
+        <h2>Hints</h2>
+
+            <ul>
+                <li>A proof is a form of communication. Just like writing an essay, it should follow logical structure and clear grammar.<br /></li>
+                <li>Every step in the proof must be small and well justified. What seems obvious to you may not be obvious to someone else.</li>
+                <li>Always evaluate the logical statement from left to right, identifying which variable is governed by which quantifier. This helps determine when to use existential generalization (choose a specific value) or use universal generalization (assume an arbitrary value).</li>
+                <li>When dealing with implications, always assume everything on the left-hand side (the hypothesis) and prove the right-hand side (the conclusion).</li>
+                <li>Never use examples when working with a universally quantified variable; examples only apply to existential statements.</li>
+                <li>If you're stuck and lack assumptions to proceed, consider proof by cases. Just ensure your cases collectively cover the entire domain.</li>
+                <li>Always clearly state the goal of your proof (the conclusion), and never assume it during your argument. The conclusion should only appear in the final step.</li>
+            </ul>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 3.4, 4.1, 4.2, 4.3, 4.4, 4.5, and 4.6.</span></p></li>
+                <li><p>4th edition: 3.4, 4.1, 4.2, 4.3, 4.4, and 4.5.</p></li>
+                <li><p>3rd edition: 2.4, 3.1, 3.2, 3.3, 3.4, and 3.5.</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 02</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 02: Logical Equivalences</h1>
+
+        <h2>Conditional</h2>
+
+            <p>The conditional (or implication) is a key logical operator, although it does not have a specific logic gate describing it. In logic, which may differ from natural languages such as English, the interpretation of the conditional is always the same, not allowing ambiguity.</p>
+
+            <p>In the conditional <em>(a -&gt; b)</em>, <em>a</em> is called the <strong>hypothesis</strong> (or antecedent), and <em>b</em> is called the <strong>conclusion</strong> (or consequent). Furthermore, we define that <em>a</em> is a <strong>sufficient</strong> condition for <em>b</em> and <em>b</em> is a <strong>necessary</strong> condition for <em>a</em>.</p>
+
+            <p>In logic, "if <em>a</em> then <em>b" </em>means that if <em>a</em> is true, then <em>b</em> has to be true; and if <em>a</em> is false, the implication is always true, regardless of the value of <em>b</em>.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>(a &rarr; b)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">T</td>
+            </tr>
+            </table>
+
+            <p>This concept can feel counterintuitive, especially when examining the first two rows of the truth table, but in formal logic, an implication is considered false only when the promise it represents is broken, that is, when the hypothesis is true but the conclusion is false.</p>
+
+            <p>Imagine you're interviewing for a job, and your potential employer tells you, "If you show up for work on Monday morning, then you will get the job." In this statement, the hypothesis is that you show up on Monday, and the conclusion is that you get the job. From a logical perspective, we evaluate the truth of this implication by considering whether or not the promise has been upheld in each possible scenario.</p>
+
+            <p>If you do show up on Monday and receive the job, the promise has been fulfilled. Both the hypothesis and the conclusion are true, so the implication holds. However, if you show up on Monday but don't get the job, the promise has clearly been broken. Here, the hypothesis is true while the conclusion is false, which makes the implication false according to the rules of logic. This is the third row of the truth table above, the only one where the statement's truth value is false.</p>
+
+            <p>Now consider the situation in which you don't show up on Monday. In that case, the hypothesis is false, and because the original promise said nothing about what happens if you fail to appear, the promise hasn't been broken. No one promised you that you would not get the job if you did not show up on Monday, perhaps fortunately! Regardless of whether you get the job or not, the implication is still considered logically true. This scenario, where a false hypothesis leads to a true implication, is an example of what is known as a <strong>vacuous truth</strong>.</p>
+
+            <p>Although such statements may feel awkward or even misleading in everyday language, they are consistent and valid in formal logic. For instance, the sentence "If 2 is odd, then 4 is prime" sounds incorrect in natural speech, yet in logical terms it is true, simply because the hypothesis "2 is odd" is false. This doesn't make English "wrong" or logic "right", but we do require clarity and consistency in logic!</p>
+
+            <p>The following are different options for expressing <em>(a &rarr; b)</em> in English:</p>
+
+            <ul>
+                <li>if <em>a</em> then <em>b</em></li>
+                <li><em>a</em> implies <em>b</em></li>
+                <li><em>a</em> only if <em>b</em></li>
+                <li><em>b</em> if <em>a</em></li>
+            </ul>
+
+            <p>Another natural form to express an implication is saying "<em>b</em> unless <em>a</em>," which does not mean the regular implication, since it adds a negation to the hypothesis: <em>(~a &rarr; b)</em>. For example, the sentence "The plants will die unless you water them" means the same as <em>"If you don't water the plants, then they will die"</em>. In this case, the hypothesis is <e>"water the plants"</em> and the conclusion is <em>"the plants will die"</em>. Note that when using unless, we state the conclusion first and we negate the hypothesis.</p>
+
+            <p>There are no gates to represent the implication (<em>a &rarr; b)</em> operation in a circuit, but since it is equivalent to <em>(~a v b), </em>it can be described in a circuit using an OR gate and a NOT gate. Furthermore, it is not possible to negate an implication using its original format, so the negation of an implication is calculated by using its definition followed by De Morgan's law:</p>
+
+            <p style="text-align: center; font-size: 20px;">~(a &rarr; b) &equiv; ~(~a &xvee; b) &equiv; (~~a &xwedge; ~b) &equiv; (a &xwedge; ~b)</p>
+
+            <p>Applying the negation to the hypothesis and the conclusion, <em>(~a &rarr; ~b)</em> is not equivalent to the negation, and it is called the <strong>inverse</strong>. (This is like the promise that was <strong>not</strong> made above that "If you do not show up on Monday, you will not get the job.")</p>
+
+            <p>Changing the order of the hypothesis and conclusion <em>(b &rarr; a)</em> is not equivalent to the negation either, and it is called the <strong>converse</strong>.</p>
+            
+            <p>Applying the negation to the hypothesis and the conclusion and changing their order, <em>(~b &rarr; ~a)</em> is not equivalent to the negation as well, but it is equivalent to the original implication, and it is called the <strong>contrapositive</strong>.</p>
+
+            <p style="text-align: center; font-size: 20px;">(a &rarr; b) &equiv; (~b &rarr; ~a)</p>
+
+            <p>Notice that the inverse and the converse are contrapositives of each other. In other words, neither the inverse nor the converse is logically equivalent to the original statement. However, the inverse and the converse are logically equivalent to each other.</p>
+
+        <hr />
+
+        <h2>Biconditional</h2>
+
+            <p>The biconditional, represented by the double arrow symbol <em>(a &harr; b),</em> evaluates whether two inputs have the same truth value. Because it checks for equality between truth values, it shares the same truth table as the <strong>XNOR</strong> gate. Although biconditional statements are not frequently used in everyday language, they are formally expressed with the phrase <strong>"if and only if,"</strong> often abbreviated as <strong>"iff"</strong>. In natural language, people often use conditional expressions to imply a biconditional relationship, since natural languages are ambiguous. However, in formal logic, ambiguity is not accepted so this confusion cannot occur. It's important to note that "if and only if" indicates a true biconditional, while "only if" by itself expresses just a conditional relationship.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>(a &harr; b)</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">T</td>
+            </tr>
+            </table>
+
+            <p>In this case, <em>a</em> is a necessary and sufficient condition for <em>b</em>, which means that both <em>(a &rarr; b)</em> and <em>(b &rarr; a)</em> have to be true at the same time.</p>
+
+            <p style="text-align: center; font-size: 20px;">(a &harr; b) &equiv; (a &rarr; b) &xwedge; (b &rarr; a)</p>
+
+        <hr />
+
+        <h2>Multiplexers</h2>
+
+            <p>A multiplexer (MUX) is a circuit component that selects between two inputs based on a third selector input. It will output <em>a</em> if <em>select</em> is false and <em>b</em> if <em>select</em> is true.</p>
+
+            <table style="border-collapse: collapse;" cellpadding="10">
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>a</em></td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 3px solid black;"><em>b</em></td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 3px solid black;"><em>select</em></td>
+                <td style="text-align: center; border-bottom: 3px solid black;"><em>m</em></td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">F</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black; border-bottom: 1px solid black;">F</td>
+                <td style="text-align: center; border-bottom: 1px solid black;">T</td>
+            <tr>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 1px solid black;">T</td>
+                <td style="text-align: center; border-right: 3px solid black;">T</td>
+                <td style="text-align: center;">T</td>
+            </tr>
+            </table>
+
+            <p>Although not a basic logic gate, the multiplexer is represented as the following component in a circuit, which is implemented using AND, OR, and NOT gates.</p>
+
+            <p style="text-align: center;"><img src="./images/mod02/mux.png"></p>
+
+            <p>We can use a multiplexer to choose between inputs. For example, we could implement the following code:</p>
+
+            <p>
+                if a == b:<br />
+                &nbsp; &nbsp; return b<br />
+                else:<br />
+                &nbsp; &nbsp; return a
+            </p>
+                        
+            <p>We can use an XNOR gate to determine whether the values of <em>a</em> and <em>b</em> are the same. The output of the XNOR gate can then be connected to the <em>select</em> input of a multiplexer. When the XNOR output is false, indicating that <em>a</em> and <em>b</em> are different, the multiplexer selects the top input (in this case, a). When the XNOR output is true, meaning <em>a</em> and <em>b</em> are equal, the multiplexer selects the bottom input (in this case, <em>b</em>). In this way, the multiplexer uses the result of the XNOR comparison to choose between the two inputs.</p>
+
+            <p style="text-align: center;"><img src="./images/mod02/mux.gif"></p>
+
+        <hr />
+
+        <h2>Equivalence Laws</h2>
+
+            <p>Two statements are considered <strong>logically equivalent</strong> if and only if they produce the same truth table, that is, they yield identical truth values for all possible combinations of inputs. One straightforward method to verify logical equivalence is to construct the truth table for each statement and compare the results. However, this approach can become impractical as the number of input variables increases; for instance, a truth table with six inputs contains 64 rows.</p>
+            
+            <p>A more efficient and elegant method is to transform one statement into the other using a series of equivalence laws. This approach avoids exhaustive enumeration and relies on logical identities to simplify or rewrite expressions step by step.</p>
+
+            <p>A <strong>proof</strong> in logic is not just a sequence of transformations; it is also a form of communication. When constructing a proof that two statements are logically equivalent, our goal is not only to arrive at the correct result but also to ensure that others can clearly follow and understand each step. Therefore, it is essential to proceed in small, well-justified steps, each of which applies a recognized equivalence law. Avoid relying on transformations that may seem obvious to you but are not easily recognized by others unless they are explicitly supported by a named rule.</p>
+
+            <p>Like any communication, the appropriate level of abstraction depends on your audience, the community you are communicating within. In this course, we will establish our particular community's expectations; communicating outside of those may make a proof incorrect, even if it would be interpreted as entirely correct in another community.</p>
+
+            <p>For this course, the following list of equivalence laws should be used as the basis for all such transformations:</p>
+
+            <table style="border-collapse: collapse;" border="1">
+                <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Identity (I)</strong></span><br />
+                        &nbsp; (p &xwedge; T) &equiv; p<br />
+                        &nbsp; (p &xvee; F) &equiv; p
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Universal Bound (UB)</strong></span><br />
+                        &nbsp; (p &xwedge; F) &equiv; F<br />
+                        &nbsp; (p &xvee; T) &equiv; T
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Idempotent (ID)</strong></span><br />
+                        &nbsp; (p &xwedge; p) &equiv; p<br />
+                        &nbsp; (p &xvee; p) &equiv; p
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Commutative (COM)</strong></span><br />
+                        &nbsp; (p &xwedge; q) &equiv; (q &xwedge; p)<br />
+                        &nbsp; (p &xvee; q) &equiv; (q &xvee; p)
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Associative (ASS)</strong></span><br />
+                        &nbsp; (p &xwedge; (q &xwedge; r)) &equiv; ((p &xwedge; q) &xwedge; r)<br />
+                        &nbsp; (p &xvee; (q &xvee; r)) &equiv; ((p &xvee; q) &xvee; r)
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Distributive (DIST)</strong></span><br />
+                        &nbsp; (p &xvee; (q &xwedge; r)) &equiv; ((p &xvee; q) &xwedge; (p &xvee; r))<br />
+                        &nbsp; (p &xwedge; (q &xvee; r)) &equiv; ((p &xwedge; q) &xvee; (p &xwedge; r))
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Absorption (ABS)</strong></span><br />
+                        &nbsp; (p &xvee; (p &xwedge; q)) &equiv; p<br />
+                        &nbsp; (p &xwedge; (p &xvee; q)) &equiv; p
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Negation (NEG)</strong></span><br />
+                        &nbsp; (p &xwedge; ~p) &equiv; F<br />
+                        &nbsp; (p &xvee; ~p) &equiv; T
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Double Negation (DNEG)</strong></span><br />
+                        &nbsp; ~~p &equiv; p<br />
+                        &nbsp; 
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Complement (CP)</strong></span><br />
+                        &nbsp; ~T &equiv; F<br />
+                        &nbsp; ~F &equiv; T
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>DeMorgan's (DM)</strong></span><br />
+                        &nbsp; ~(p &xwedge; q) &equiv; (~p &xvee; ~q)<br />
+                        &nbsp; ~(p &xvee; q) &equiv; (~p &xwedge; ~q)
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Definition of Exclusive OR (XOR)</strong></span><br />
+                        &nbsp; (p &oplus; q) &equiv; ((p &xvee; q) &xwedge; ~(p &xwedge; q))<br />
+                        &nbsp; (p &oplus; q) &equiv; ((p &xwedge; ~q) &xvee; (~p &xwedge; q))
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Definition of Implication (IMP)</strong></span><br />
+                        &nbsp; (p &rarr; q) &equiv; (~p &xvee; q)<br />
+                        &nbsp; 
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Contrapositive (CONTP)</strong></span><br />
+                        &nbsp; (p &rarr; q) &equiv; (~q &rarr; ~p)<br />
+                        &nbsp; 
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Definition of Biconditional (BIC)</strong></span><br />
+                        &nbsp; (p &harr; q) &equiv; ((p &rarr; q) &xwedge; (q &rarr; p))<br />
+                        &nbsp; (p &harr; q) &equiv; ~(p &oplus; q)
+                    </td>
+                </tr>
+            </table>
+            
+            <p>You don't need to memorize this list; a <a href="./files/FormulaSheet.pdf">formula sheet</a> will be provided to you at all assessments during the course.</em></p>
+
+            <p>Having agreed on particular laws to use, it's important that application of our laws will always generate equivalent statements. What justifies an equivalence law? It must be an equivalance itself; you can check using a truth table that each of these laws is indeed an equivalence.</p>
+
+            <p>Let's use these laws to prove that ((b &rarr; c) &xwedge; (a &rarr; c) &equiv; ((a &xvee; b) &rarr; c)</p>
+            
+            <p>We begin by selecting one of the expressions as our starting point, and our goal is to systematically transform it into the other expression. This transformation must be done step by step, using one equivalence law at a time. At each step, we must clearly indicate which law is being applied and identify the specific parts of the expression that correspond to the variables (such as <em>p</em>, <em>q</em>, or <em>r</em>) in the law. It's crucial that this mapping is exact; each instance of the law must match the structure of the expression being rewritten.</p>
+
+            <p>Keep in mind that all of the listed laws can be applied in either direction, depending on what the transformation requires. This ensures flexibility in the proof process while still maintaining clarity and logical rigor. In addition, since these are equivalence laws that can be applied in either direction (that "replace equals for equals"), we can apply them to a complete subexpression (a part in parentheses) of the statement we're operating on, and the statement retains its original meaning.</p>
+            
+            <table style="border-collapse: collapse;" cellpadding="7", border="1">
+                <tr>
+                    <td><span style="color: #000000;">((a v b) -&gt; c)</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span style="color: #000000;">(<span style="color: #c71f23;"><strong>~(a v b) v c</strong></span>)</span></td>
+                    <td><span style="color: #000000;">Definition of Implication</span></td>
+                    <td><span style="color: #000000;">p = (a v b)</span></td>
+                    <td><span style="color: #000000;">q = c</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span style="color: #000000;">((<span style="color: #c71f23;"><strong>~a ^ ~b</strong></span>) v c)</span></td>
+                    <td><span style="color: #000000;">De Morgan's Law</span></td>
+                    <td><span style="color: #000000;">p = a</span></td>
+                    <td><span style="color: #000000;">q = b</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span style="color: #000000;">(<span style="color: #c71f23;"><strong>(~a v c) ^ (~b v c)</strong></span>)</span></td>
+                    <td><span style="color: #000000;">Distribution</span></td>
+                    <td><span style="color: #000000;">p = ~a</span></td>
+                    <td><span style="color: #000000;">q = ~b</span></td>
+                    <td><span style="color: #000000;">r = c</span></td>
+                </tr>
+                <tr>
+                    <td><span style="color: #000000;">((<span style="color: #c71f23;"><strong>a -&gt; c</strong></span>) ^ (~b v c))</span></td>
+                    <td><span style="color: #000000;">Definition of Implication</span></td>
+                    <td><span style="color: #000000;">p = a</span></td>
+                    <td><span style="color: #000000;">q = c</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span style="color: #000000;">((a -&gt; c) ^ (<span style="color: #c71f23;"><strong>b -&gt; c</strong></span>))</span></td>
+                    <td><span style="color: #000000;">Definition of Implication</span></td>
+                    <td><span style="color: #000000;">p = b</span></td>
+                    <td><span style="color: #000000;">q = c</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span style="color: #000000;">(<span style="color: #c71f23;"><strong>(b -&gt; c) ^ (a -&gt; c)</strong></span>)</span></td>
+                    <td><span style="color: #000000;">Commutative</span></td>
+                    <td><span style="color: #000000;">p = (b -&gt; c)</span></td>
+                    <td><span style="color: #000000;">q = (a -&gt; c)</span></td>
+                    <td></td>
+                </tr>
+            </table>
+
+            <p>There is no fixed algorithm or set of steps to follow when constructing a proof like the one above; practicing is the best way to improve your skills. However, becoming familiar with the laws and the steps used in the example is an essential first step.</p>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 2.2</span></p></li>
+                <li><p>4th edition: 2.2</p></li>
+                <li><p>3rd edition: 1.2</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>
+

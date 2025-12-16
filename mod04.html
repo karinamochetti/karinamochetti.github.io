@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 04</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 04: Propositional Logic Proofs</h1>
+
+        <h2>Argument</h2>
+
+            <p>A logical argument consists of premises, which are statements assumed to be true and used as evidence, and a conclusion, which is the statement that follows logically from the premises. An argument typically looks like this:</p>
+
+            <p>
+                premise 1<br />
+                premise 2<br />
+                premise 3<br />
+                &therefore; conclusion
+            </p>
+            
+            <p>The symbol &therefore; means "therefore" and introduces the conclusion. Note that an argument can have multiple premises (or even none) but only one conclusion.</p>
+
+            <p>&nbsp;</p>
+
+            <h3>Validity</h3>
+
+            <p>An argument is <strong>valid</strong> if whenever all the premises are true, the conclusion is also true. This is tested using a truth table by checking if the conclusion is true in every critical row. A <strong>critical row </strong>is a row in which all premises are true. Note that the value of the conclusion for non-critical rows does not matter to validity.</p>
+
+            <p>The following argument is valid, since the conclusion is true in every critical row.</p>
+
+            <p>
+                c<br />
+                (a &rarr; (b &xwedge; c))<br />
+                (a &xvee; ~c)<br />
+                &therefore; b
+            </p>
+
+            <table style="border-collapse: collapse; text-align: center;" border="1" cellpadding="10">
+                <tr>
+                    <td colspan="3">inputs</td>
+                    <td colspan="3">premises</td>
+                    <td>conclusion</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>a</td>
+                    <td>b</td>
+                    <td>c</td>
+                    <td>c</td>
+                    <td>(a &rarr; (b &xwedge; c))</td>
+                    <td>(a &xvee; ~c)</td>
+                    <td>b</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="font-size: 10pt;">critical row: true conclusion</span></td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>An argument is invalid only when there is at least one critical row with a false conclusion.</p>
+            
+            <p>The following argument is invalid, since there is at least one critical row with a false conclusion. The following example has 2 such critical rows.</p>
+
+            <p>
+                (a &rarr; b)<br />
+                (a &rarr; (b &xwedge; c))<br />
+                &therefore; c
+            </p>
+
+            <table style="border-collapse: collapse; text-align: center;" border="1" cellpadding="10">
+                <tr>
+                    <td colspan="3">inputs</td>
+                    <td colspan="2">premises</td>
+                    <td>conclusion</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>a</td>
+                    <td>b</td>
+                    <td>c</td>
+                    <td>(a &rarr; b)</td>
+                    <td>(a &rarr; (b &xwedge; c))</td>
+                    <td>c</td>
+                <td></td>
+                </tr>
+                    <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td><span style="background-color: #f8cac6;">T</span></td>
+                    <td><span style="background-color: #f8cac6;">T</span></td>
+                    <td><span style="background-color: #f8cac6;">F</span></td>
+                    <td><span style="font-size: 10pt;">critical row: false conclusion</span></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="font-size: 10pt;">critical row: true conclusion</span></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td><span style="background-color: #f8cac6;">T</span></td>
+                    <td><span style="background-color: #f8cac6;">T</span></td>
+                    <td><span style="background-color: #f8cac6;">F</span></td>
+                    <td><span style="font-size: 10pt;">critical row: false conclusion</span></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="font-size: 10pt;">critical row: true conclusion</span></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="background-color: #3598db;">T</span></td>
+                    <td><span style="font-size: 10pt;">critical row: true conclusion</span></td>
+                </tr>
+            </table>
+
+            <p>Notice that a valid logical argument is a promise. The promise guarantees the conclusion is true whenever the premises are true, but it guarantees nothing when the premises are not all true.</p>
+
+            <p>&nbsp;</p>
+
+            <h3>Contradictory Premises</h3>
+
+            <p>When no row in a truth table has all premises true at the same time, the premises are <strong>contradictory</strong>. Such an argument is logically valid because it is impossible for all premises to be true and the conclusion false. However, contradictory premises make the argument useless in practice.</p>
+
+            <p>The following argument does not have critical rows; therefore, it has contradictory premises, and it is valid.</p>
+
+            <p>
+                c<br />
+                (a &xrarr; (b &xwedge; c))<br />
+                (a &xvee; ~c)<br />
+                (~a &xvee; ~b)<br />
+                &therefore; b
+            </p>
+            
+            <table style="border-collapse: collapse; text-align: center;" border="1" cellpadding="10">
+                <tr>
+                    <td colspan="3">inputs</td>
+                    <td colspan="4">premises</td>
+                    <td>conclusion</td>
+                    <td>no critical rows</td>
+                </tr>
+                <tr>
+                    <td>a</td>
+                    <td>b</td>
+                    <td>c</td>
+                    <td>c</td>
+                    <td>(a &rarr; (b &xwedge; c))</td>
+                    <td>(a &xvee; ~c)</td>
+                    <td>(~a &xvee; ~b)</td>
+                    <td>b</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td></td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+        <hr />
+        
+        <h2>Rules of Inference</h2>
+
+            <p>One straightforward method to verify if an argument is valid is to construct a truth table with columns for each premise and check the conclusion values for each critical row. However, as for the logically equivalent proofs, this approach can become impractical as the number of input variables increases.</p>
+
+            <p>A more efficient and elegant method is to infer new premises using a series of rules of inference. It is also valid to transform premises into equivalent statements using equivalence laws.</p>
+
+            <p>For this course, the following list of rules of inference should be used as the basis:</p>
+
+            <table style="border-collapse: collapse;" border="1">
+                <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Modus Ponens (M.PON)</strong></span><br />
+                        &nbsp; (p &rarr; q)<br />
+                        &nbsp; p<br />
+                        &nbsp; &therefore; q
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Modus Tollens (M.TOL)</strong></span><br />
+                        &nbsp; (p &rarr; q)<br />
+                        &nbsp; ~q<br />
+                        &nbsp; &therefore; ~p
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Generalization (GEN)</strong></span><br />
+                        &nbsp; p<br />
+                        &nbsp; &therefore; (p &xvee; q)
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Specialization (SPEC)</strong></span><br />
+                        &nbsp; (p &xwedge; q)<br />
+                        &nbsp; &therefore; p
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Conjunction (CONJ)</strong></span><br />
+                        &nbsp; p<br />
+                        &nbsp; q<br />
+                        &nbsp; &therefore; (p &xwedge; q)
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Elimination (ELIM)</strong></span><br />
+                        &nbsp; (p &xwedge; q)<br />
+                        &nbsp; ~q<br />
+                        &nbsp; &therefore; p
+                    </td>
+                </tr>
+                 <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Transitivity (TRANS)</strong></span><br />
+                        &nbsp; (p &rarr; q)<br />
+                        &nbsp; (q &rarr; r)<br />
+                        &nbsp; &therefore; (p &rarr; r)
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Proof by Cases (CASE)</strong></span><br />
+                        &nbsp; (p &rarr; r)<br />
+                        &nbsp; (q &rarr; r)<br />
+                        &nbsp; &therefore; ((p &xvee; q) &rarr; r)
+                    </td>
+                </tr>
+                 <tr>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Resolution (RES)</strong></span><br />
+                        &nbsp; (p &xvee; q)<br />
+                        &nbsp; (~p &xvee; r)<br />
+                        &nbsp; &therefore; (q &xvee; r)
+                    </td>
+                    <td style="width: 33.3004%; height: 105.289px;">
+                        <span style="font-size: 14pt;"><strong>Contradiction (CONTD)</strong></span><br />
+                        &nbsp; (p &rarr; F)<br />
+                        &nbsp; &therefore; ~p
+                    </td>
+                </tr>
+            </table>
+
+            <p>You don't need to memorize this list; a <a href="./files/FormulaSheet.pdf">formula sheet</a> will be provided to you at all assessments during the course.</em></p>
+
+            <p>Similar to equivalence laws, having agreed on rules to use, we should justify that these rules always work. Each of our rules of inference is itself a valid argument, which keeps it from producing an invalid result. You can check their validity with truth tables.</p>
+
+            <p>&nbsp;</p>
+
+            <p>Let's use these laws to prove that the following argument is valid:</p>
+
+            <p>
+                c<br />
+                (a &rarr; (b &xwedge; c))<br />
+                (a &xvee; ~c)<br />
+                &therefore; b
+            </p>
+
+            <p>Proof:</p>
+
+            <table style="border-collapse: collapse;" border="1" cellpadding="4">
+                <tr>
+                    <td>01. c</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>02. (a &rarr; (b &xwedge; c))</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>03. (a &xvee; ~c)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>04. a</td>
+                    <td>Elimination from steps 1 and 3</td>
+                </tr>
+                <tr>
+                    <td>05. (b &xwedge; c)</td>
+                    <td>Modus Ponens from steps 2 and 4</td>
+                </tr>
+                <tr>
+                    <td>06. b</td>
+                    <td>Specialization from step 5</td>
+                </tr>
+            </table>
+
+            <p>Note that rules of inference cannot be used on parts of statements, so it is <strong>not</strong> possible to conclude (a &rarr; c) from ((a &xwedge; b) &rarr; c) using SPEC, for example. You can check that ((a &xwedge; b) &rarr; c) can be true while (a &rarr; c) is false in the case when a is true, b is false, and c is false, which proves that this argument is invalid.</p>
+
+            <p>&nbsp;</p>
+
+            <p>When it is possible to derive the negation of a given conclusion from the premises, doing so does not necessarily show the original argument to be invalid. It is still possible that the premises are contradictory, in which case the original argument and the version that negates the conclusion are both valid.</p>
+
+            <p >As a result, rules of inference cannot be used to prove that an argument is invalid. Instead, the simplest and most effective approach is to find a single critical row, a case where all premises are true and the conclusion is false. The existence of just one such row is sufficient to establish that the argument is invalid, making it unnecessary to construct the entire truth table.</p>
+
+            <p>
+                (a &rarr; b)<br />
+                (a &rarr; (b &xwedge; c))<br />
+                &therefore; c
+            </p>
+
+            <p>Proof that this argument is <strong>invalid</strong>:</p>
+
+            <table style="border-collapse: collapse;" border="1" cellpadding="4">
+                <tr>
+                    <td style="text-align: center;">a &equiv; F &nbsp; &nbsp; b &equiv; T &nbsp; &nbsp; c &equiv; F</td>
+                </tr>
+                <tr>
+                    <td>Premise 1 is true: (a &rarr; b) &equiv; (F &rarr; T) &equiv; T</td>
+                </tr>
+                <tr>
+                        <td>Premise 2 is true: (a &rarr; (b &xwedge; c)) &equiv; (F &rarr; (T &xwedge; F)) &equiv; (F &rarr; F) &equiv; T</td>
+                </tr>
+                <tr>
+                        <td>Conclusion is false: c &equiv; F</td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>Finally, an argument with contradictory premises, that is, premises that are never all true at the same time, does not have any critical rows and is logically valid. In such cases, any conclusion can be derived from the premises, including both the conclusion and its negation. This is because from a contradiction, one can infer anything, a principle known as the principle of explosion. As a result, it is always possible to conclude false from contradictory premises.</p>
+
+            <p>
+                c<br />
+                (a &rarr; (b &xwedge; c))<br />
+                (a &xvee; ~c)<br />
+                (~a &xvee; ~b)<br />
+                &therefore; b
+            </p>
+
+            <p>Proof:</p>
+
+            <table style="border-collapse: collapse;" border="1" cellpadding="4">
+                <tr>
+                    <td>01. c</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>02. (a &rarr; (b &xwedge; c))</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>03. (a &xvee; ~c)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>04. (~a \vee ~b)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>05. a</td>
+                    <td>Elimination from steps 1 and 3</td>
+                </tr>
+                <tr>
+                    <td>06. ~b</td>
+                    <td>Elimination from steps 4 and 5</td>
+                </tr>
+                <tr>
+                    <td>07. (b &xwedge; c)</td>
+                    <td>Modus Ponens from steps 2 and 5</td>
+                </tr>
+                <tr>
+                    <td>08. b</td>
+                    <td>Specialization from steps 7</td>
+                </tr>
+                <tr>
+                    <td>09. (b &xwedge; ~b)</td>
+                    <td>Conjunction from steps 6 and 8</td>
+                </tr>
+                <tr>
+                    <td>10. F</td>
+                    <td>Negation from steps 9</td>
+                </tr>
+            </table>
+
+            <p>From here, we can prove anything. Let's say we want to prove <em>x</em>, a variable that doesn't even appear in the premises. We derive (F &xvee; x in step 11 by Generalization from step 10 and then <em>x</em> in step 12 by Identity from step 11.</p> 
+
+            <p><strong>Remember, an argument with contradictory premises is always valid!</strong></p>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 2.3</span></p></li>
+                <li><p>4th edition: 2.3</p></li>
+                <li><p>3rd edition: 1.3</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>

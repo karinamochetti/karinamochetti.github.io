@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 03</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 03: Number Representation</h1>
+
+        <h2>Integers Representation</h2>
+
+            <p>Numbers can be expressed as a sum of products, where each term consists of a digit multiplied by a power of a base. In <strong>decimal</strong> (base 10), digits range from 0 to 9. This system is most common because humans typically count using ten fingers.</p>
+
+            <p style="text-align: center; font-size: 20px;">219 = 2 &middot; 10<sup>2</sup> + 1 &middot; 10<sup>1</sup> + 9 &middot; 10<sup>0</sup> = 200 + 10 + 9</p>
+
+            <p>However, computers use a different system, <strong>binary</strong> (base 2), because they operate with only two symbols: 0 and 1. Each binary digit (also called a bit) represents a power of 2. We will sometimes specify the base of a number with a subscript; so, 11011<sub>2</sub> is in base 2 but 11011<sub>10</sub> is in base 10.</p>
+
+            <p style="text-align: center; font-size: 20px;">11011<sub>2</sub> = 1 &middot; 2<sup>4</sup> + 1 &middot; 2<sup>3</sup> + 0 &middot; 2<sup>2</sup> + 1 &middot; 2<sup>1</sup> + 1 &middot; 2<sup>0</sup> = 27<sub>10</sub></p>
+
+            <p>In general, a number written in base-<em>x</em> uses <em>x</em> different digits. For example, <strong>hexadecimal</strong> (base 16) includes digits from 0 to 9 and letters A to F to represent values 10 to 15. So 0x3CF is the hexadecimal representation of 975 in decimal (note how we use 0x to represent an hexadecimal number).</p>
+
+            <p style="text-align: center; font-size: 20px;">3CF<sub>16</sub> = 3 &middot; 16<sup>2</sup> + C &middot; 16<sup>1</sup> + F &middot; 16<sup>0</sup> = 3 &middot; 16<sup>2</sup> + 12 &middot; 16<sup>1</sup> + 15 &middot; 16<sup>0</sup> = 975<sub>10</sub></p>
+
+            <p>Hexadecimal numbers are primarily used to represent binary numbers in a more human-readable format. For this reason, direct conversion between hexadecimal and binary is the standard practice, with other bases being converted to binary first. The conversion process is straightforward: group the binary bits into four-digit sets, with each set corresponding to a single hexadecimal digit. If the total number of bits is not a multiple of four, leading zeros are added to the binary number. The conversion mapping is as follows:</p>
+
+            <table style="border-collapse: collapse; width: 400px;" border="1" cellpadding="10">
+                <tr>
+                    <td>0000 - 0</td>
+                    <td>0100 - 4</td>
+                    <td>1000 - 8</td>
+                    <td>1100 - C</td>
+                </tr>
+                <tr>
+                    <td>0001 - 1</td>
+                    <td>0101 - 5</td>
+                    <td>1001 - 9</td>
+                    <td>1101 - D</td>
+                </tr>
+                <tr>
+                    <td>0010 - 2</td>
+                    <td>0110 - 6</td>
+                    <td>1010 - A</td>
+                    <td>1110 - E</td>
+                </tr>
+                <tr>
+                    <td>0011 - 3</td>
+                    <td>0111 - 7</td>
+                    <td>1011 - B</td>
+                    <td>1111 - F</td>
+                </tr>
+            </table>
+
+            <p>For example, the hexadecimal value 0xC3F translates to 1100 0011 1111 in binary, while the binary number 11011 corresponds to 0x1B< in hexadecimal.</p>
+
+            <p>&nbsp;</p>
+
+            <p>An n-bit binary number b<sub>n-1</sub>b<sub>n-2</sub>...b<sub>2</sub>b<sub>1</sub>b<sub>0</sub> is represented by the summation b<sub>n-1</sub> &middot; 2<sup>n-1</sup> + b<sub>n-2</sub> &middot; 2<sup>n-2</sup> + ... + b<sub>2</sub> &middot; 2<sup>2</sup> + b<sub>1</sub> &middot; 2<sup>1</sup> + b<sub>0</sub> &middot; 2<sup>0</sup></p>
+
+            <p>To convert a binary number to decimal, multiply each bit by its corresponding power of 2 and add the results.</p>
+
+            <p style="text-align: center; font-size: 20px;">11011<sub>2</sub> = 1 &middot; 2<sup>4</sup> + 1 &middot; 2<sup>3</sup> + 0 &middot; 2<sup>2</sup> + 1 &middot; 2<sup>1</sup> + 1 &middot; 2<sup>0</sup> = 27<sub>10</sub></p>
+
+            <p>To convert decimal to binary, find the largest power of 2 less than or equal to the number, subtract it, and repeat until the sum of powers equals the original number.</p>
+
+            <p style="text-align: center; font-size: 20px;">27<sub>10</sub> = 16 + 11 = 16 + 8 + 3 = 16 + 8 + 2 + 1 = 1 &middot; 2^4 + 1 &middot; 2<sup>3</sup> + 0 &middot; 2<sup>2</sup> + 1 &middot; 2<sup>1</sup> + 1 &middot; 2<sup>0</sup> = 11011<sub>2</sub></p>
+
+            <h3>Adding Binary Numbers</h3>
+            
+            <p>Adding in binary is similar to decimal addition but follows simpler rules:</p>
+
+            <ul>
+                <li><p>0 + 0 = 0</p></li>
+                <li><p>1 + 0 = 1</p></li>
+                <li><p>1 + 1 = 10 (that is, a 0 with a carry)</p></li>
+            </ul>
+
+            <p>Carries work the same as in decimal, propagating to the next column on the left.</p>
+
+            <p>Adding two binary numbers follows the same process as adding two decimal numbers. We match the digits from right to left and add the two. If the answer has an extra digit, called a carry, we transfer that to the next pair of bits to the left of it and add to that. Later, when we talk about integers represented with a fixed number of bits, we'll talk more about what to do with a carry that "goes off the end."</p>
+
+            <p>So 0+0 is equal to 0 (not generating a carry). <br />
+                And 1+0 is equal to 1 (not generating a carry). <br />
+                But 1+1 is equal to 10, and since it needs two digits to be represented, it generates a carry.</p>
+
+            <table style="border-collapse: collapse; width: 14.0947%;">
+                <tr>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="font-size: 8pt; color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="font-size: 8pt; color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="font-size: 8pt; color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="font-size: 8pt; color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"></td>
+                </tr>
+                <tr>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">1</span></td>
+                </tr>
+                <tr>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">+</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-style: none;"><span style="color: #000000;">1</span></td>
+                </tr>
+                <tr>
+                    <td style="width: 11.1111%; text-align: center; border-top: 1px solid black;"></td>
+                    <td style="width: 11.1111%; text-align: center; border-top: 1px solid black;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-top: 1px solid black;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-top: 1px solid black;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-top: 1px solid black;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-top: 1px solid black;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-top: 1px solid black;"><span style="color: #000000;">1</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-top: 1px solid black;"><span style="color: #000000;">0</span></td>
+                    <td style="width: 11.1111%; text-align: center; border-top: 1px solid black;"><span style="color: #000000;">0</span></td>
+                </tr>
+            </table>
+
+        <hr />
+
+        <h2>Signed and Unsigned Integers</h2>
+
+            <p>So far, we've only discussed <strong>unsigned numbers</strong>, non-negative integers. However, to represent both positive and negative integers, we use <strong>signed number</strong> representations. In a computer using binary to represent numbers, we cannot use the '&plus;' or '&minus;' symbols, so different encoding schemes are used. In this section we will describe two: sign magnitude and two's complement.</p>
+
+            <h3>Sign Magnitude</h3>
+
+            <p>In this method, the leftmost bit indicates the sign, with 0 representing a positive number and 1 representing a negative number. The remaining bits represent the absolute value in binary.</p>
+
+            <p>For example, 21 in decimal is 10101 in binary. So using sign magnitude, we have</p>
+
+            <p>+21 = 010101</p>
+
+            <p>-21 = 110101</p>
+
+            <h3>Two's Complement</h3>
+
+            <p>The two's complement of a binary number is obtained by inverting all the bits and then adding 1 to the result. For example, the two's complement of 11100010 is 00011101 + 1, which equals 00011110. This operation is used to represent negative numbers in binary. In this system, all numbers beginning with a 0 represent positive values (or zero), and to represent a negative number, we take the two's complement of its positive counterpart.</p>
+
+            <p>For example, using 6 bits, the number +21 would be represented by 010101, and -21 would be represented by its two's complement: 101010+1 = 101011.</p>
+
+            <p>The two's complement can be thought of as multiplying a number by -1 or changing its sign.</p>
+
+            <p>One advantage of this system is that subtraction can be performed using addition. Instead of directly calculating x - y, we can add x and the two's complement of y (which is -y). Any carry beyond the fixed bit width is ignored.</p>
+            
+            <p>x - y = x + (-y)</p>
+
+            <p>For example, considering 6 bits, let x = 011011 (27 in decimal) and y = 001110 (14 in decimal). The subtraction x-y is 001101 (13 in decimal). That result can also be obtained by adding x to the two's complement of y, 110001 + 1 = 110010 (-14 in decimal):</p>
+
+            <p>x - y = 011011 - 001110 = 011011 + 110010 = 001101</p>
+
+            <p>Here, 011011 + 110010 actually produces 1001101, but since we are restricted to 6 bits only, we discard the leftmost 1, making sure the answer has 6 bits, and 001101 represents +13 (since it has the leftmost bit 0).</p>
+
+            <p>For example, 21 in decimal is 10101 in binary. So using two's complement, we have</p>
+
+            <p>+21 = 010101</p>
+
+            <p>-21 = 110110</p>
+
+            <h4>Why do we add 1?</h4>
+
+            <p>In this new scheme, zero has only one representation, a bit with only 0s. When we flip and add 1 to 0, we obtain zero as a result. For example, with 6 bits, 0 is 000000 and its two's complement is 111111 + 1 = 000000. As before, any extra carry is ignored when adding two numbers in this representation.</p>
+
+            <p>If we don't add 1, zero would have two representations. In 6 bits, +0 would be 000000, while -0 would be 111111. Having two distinct representations of zero would cause inconsistencies and errors in computation. Adding 1 prevents this issue.</p>
+
+            <h4>Why don't we subtract 1 and flip?</h4>
+
+            <p>As explained, the two's complement operation is used to change a number's sign. To represent -14 in 6 bits, we apply the two's complement to 14. Flipping 001110 gives 110001, and adding 1 gives 110010, which represents -14. To reverse this, we can apply the same operation to 110010: flipping gives 001101, and adding 1 gives 001110, which is +14.</p>
+
+            <p>The two's complement is therefore a symmetric operation. For instance, the two's complement of 011011 is 100101 (100100 + 1 = 100101). Reversing this can be done either by subtracting 1 and flipping (100101 - 1 = 100100 &rarr; 011011) or by flipping and adding 1 (100101 &rarr; 011010 + 1 = 011011).</p>
+
+            <p>Today, all computers use two&rsquo;s complement to represent negative numbers and to perform subtraction using only addition. This allows hardware to be simpler, since only an adder circuit is required. <strong>This is how we will always represent signed integers in this course as well.</strong></p>
+
+            <p style="text-align: center;"><img style="max-width: 50%; height: auto;" src="./images/mod03/bin.gif"></p>
+
+        <hr />
+
+        <h2>Real Numbers Representation</h2>
+
+            <p>To represent real numbers (numbers with fractional parts), we need to represent both the integer and fractional parts in binary. For the integer part (the left of the "binary point"), we label the powers of 2 exactly as we did above, counting up from 2<sup>0</sup>. For the fractional part (the right of the "binary point"), we count down from 2<sup>0</sup>: 2<sup>-1</sup>, 2<sup>-2</sup>, 2<sup>-3</sup>, and so on. For example:</p>
+
+            <p style="text-align: center; font-size: 20px;">1011.1001 = 1 &middot; 2<sup>3</sup> + 0 &middot; 2<sup>2</sup> + 1 &middot; 2<sup>1</sup> + 1 &middot; 2<sup>0</sup> + 1 &middot; 2<sup>-1</sup> + 0 &middot; 2<sup>-2</sup> + 0 &middot; 2<sup>-3</sup> + 1 &middot; 2<sup>-4</sup> = </p>
+
+            <p style="text-align: center; font-size: 20px;">2<sup>3</sup> + 2<sup>1</sup> + 2<sup>0</sup> + 2<sup>-1</sup> + 2<sup>-4</sup> = 8 + 2 + 1 + 0.5 + 0.0625 = 11.5625</p>
+
+            <p>In order to convert a decimal real number to binary, we divide the number into two. We use one scheme to convert the integer part of the number and another one to convert the fractional part. For example, the number 13.90625 has 13 as the integer part and 90625 as the fractional part.</p>
+
+            <p>For the integer part, we divide the number by 2 until reaching 0, and at each step we annotate the remainder of the division. After reaching 0, we use the list of remainders backwards to describe the integer part (you can also use this first part of the process on integers).</p>
+
+            <table style="border-collapse: collapse;" border="1" cellpadding="4">
+                <tr>
+                        <td><strong>base 10</strong></td>
+                        <td><strong>next base 10: divide by 2</strong></td>
+                        <td><strong>base 2: modulo by 2</strong></td>
+                        <td></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>13 / 2 = 6</td>
+                    <td>13 % 2 = 1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>6 / 2 = 3</td>
+                    <td>6 % 2 = 0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>3 / 2 = 1</td>
+                    <td>3 % 2 = 1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1 / 2 = 1</td>
+                    <td>1 % 2 = 1</td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+            <p style="font-size: 20px;">13<sub>10</sub> = 1101<sub>2</sub></p>
+            
+            <p>For the fractional part, we now multiply the number by 2 until reaching 0, and at each step we remove and annotate the integer part of the result.</p>
+
+            <table style="border-collapse: collapse;" border="1" cellpadding="4">
+                <tr>
+                        <td><strong>base 10</strong></td>
+                        <td><strong>multiply by 2</strong></td>
+                        <td><strong>next base 10: fractional part</strong></td>
+                        <td>base 2: integer part</td>
+                        <td></td>
+                </tr>
+                <tr>
+                    <td>0.90625</td>
+                    <td><span style="color: #000000;"><strong><span style="color: #e62429;">1</span></strong>.8125</td>
+                    <td>0.8125</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>0.8125</td>
+                    <td><span style="color: #000000;"><strong><span style="color: #e62429;">1</span></strong>.625</td>
+                    <td>0.625</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>0.625</td>
+                    <td><span style="color: #000000;"><strong><span style="color: #e62429;">1</span></strong>.25</td>
+                    <td>0.25</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>0.25</td>
+                    <td><span style="color: #000000;"><strong><span style="color: #e62429;">0</span></strong>.5</td>
+                    <td>0.5</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>0.5</td>
+                    <td><span style="color: #000000;"><strong><span style="color: #e62429;">1</span></strong></td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+            <p style="font-size: 20px;">0.90625<sub>10</sub> = 0.11101<sub>2</sub></p>
+
+            <p>Therefore, 13.90625 is equal to 1101.11101 in binary. While integer conversions always terminate, some decimal values (like 0.1) cannot be represented exactly in binary, requiring infinite bits. These are approximated in digital systems.</p>
+
+            <h3>Scientific Notation</h3>
+
+            <p>Computers represent real numbers using <strong>scientific notation</strong>, a format that makes it possible to efficiently store and manipulate numbers with both large and small magnitudes. In scientific notation, a number is written with exactly one non-zero digit before the decimal point, multiplied by a power of the base. The exponent reflects how far the decimal point is moved. Moving it to the left results in a positive exponent, while moving it to the right results in a negative exponent.</p>
+
+            <p style="text-align: center; font-size: 20px;">4282.19 = 4.28219 &middot; 1000 = 4.28219 &middot; 10<sup>3</sup></p>
+
+            <p style="text-align: center; font-size: 20px;">0.00243 = 2.43 &middot; 0.0001 = 2.43 &middot; 10<sup>-3</sup></p>
+
+            <p>While decimal scientific notation uses powers of 10, binary scientific notation uses powers of 2, and always begins with a single 1 before the binary point.</p>
+
+            <p style="text-align: center; font-size: 20px;">011011.100 = 1.1011100 &middot; 2<sup>4</sup></p>
+
+            <p>To store a real number, the computer converts it to binary scientific notation and encodes three components:</p>
+
+            <ul>
+                <li>Exponent: the exponent of the power of two, using a signed integer (00000100 in the example above using 8-bits)</li>
+                <li>Mantissa: the number after the decimal point (10111000 in the example above using 8-bits)</li>
+                <li>Sign: the number sign, by using sign magnitude (0, since the number is positive)</li>
+            </ul>
+
+            <p>The number of bits allocated to the exponent and the mantissa directly affects the <strong>precision</strong> (how accurately the number can be represented) and the <strong>limits</strong> (how large or small the number can be) in a given system.</p>
+
+        <hr />
+        
+        <h2>Modular Arithmetic</h2>
+
+            <p>For a given integer m &gt; 0, we can classify all integers according to their remainder after division by m. We write r = x mod m to denote the representative of the equivalence class of x, where 0 &le; r &lt; m. This means that when we divide x by m, the remainder is r. For example, 27 mod 4 = 3, because 27 divided by 4 is equal to 6, with 3 as a remainder, or 27 = 6*4+ 3.</p>
+
+            <p>If two integers <em>x</em> and <em>y</em> leave the same remainder when divided by <em>m</em>, then they belong to the same equivalence class modulo <em>m</em>. We say that <em>x</em> and <em>y</em> are <strong>congruent</strong> modulo <em>m</em>, and write: <em>x</em> &equiv; <em>y</em> mod <em>m</em>. So <em>x</em> mod <em>m</em> = <em>y</em> mod <em>m</em> means the same as <em>x</em> &equiv; <em>y</em> mod <em>m</em> (note the difference between the symbols used, = and &equiv;). For example, 55 &equiv; 27 mod 4, because 55 mod 4 = 27 mod 4 = 3.</p>
+            
+            <p>Furthermore, if x and y are congruent modulo m (x &equiv; y mod m), then we can say that x = y + qm, for some integer q. For example, since 55 &equiv; 27 mod 4, then 55 = 27 + 4q, for q = 7.</p>
+
+            <p>Notice that based on our definition of divisibility, when <em>a</em> divides <em>b</em>, there is no remainder when we divide <em>b</em> by <em>a</em>. Using the notation <em>a|b</em>, which reads as <em>a</em> divides <em>b</em>, we have: (a &gt; 0 &xwedge; a|b) &rarr; b &equiv; 0 mod a.</p>
+
+            <h4>Fundamental Theorem of Modular Arithmetic</h4>
+
+            <p>Let <em>a</em> &equiv; <em>c</em> mod <em>m</em> and <em>b</em> &equiv; <em>d</em> mod <em>m</em>, then</p>
+                        
+            <ul>
+                <li><em>ab</em> &equiv; <em>cd</em> mod <em>m</em></li>
+                <li><em>a</em>+<em>b</em> &equiv; <em>c</em>+<em>d</em> mod <em>m</em></li>
+            </ul>
+
+            <p>This means that it does not matter whether you carry out all the operations first and then take the remainder modulo m, or take the remainder modulo m after each step; the result will be the same.</p>
+
+            <p>Example:</p>
+                        
+            <p>((10 mod 7) + (15 mod 7)) &middot; (23 mod 7) &equiv; ((10+15) &middot; 23) mod 7</p>
+                        
+            <p>
+                ((10+15) &middot; 23) mod 7 = <br />
+                575 mod 7 = <br />
+                1
+            </p>
+
+            <p>
+                (((10 mod 7) + (15 mod 7)) &middot; (23 mod 7)) mod 7 = <br />
+                ((3 + (15 mod 7)) &middot; (23 mod 7)) mod 7 = <br />
+                ((3 + 1) &middot; (23 mod 7)) mod 7 = <br />
+                ((3 + 1) &middot; 2) mod 7 = <br />
+                (4 &middot; 2) mod 7 = <br />
+                8 mod 7 = <br />
+                1
+            </p>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 2.5</span></p></li>
+                <li><p>4th edition: 2.5</p></li>
+                <li><p>3rd edition: 1.5</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>

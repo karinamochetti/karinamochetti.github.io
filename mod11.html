@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 11</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 11: A Working Computer</h1>
+
+        <h2>Big O</h2>
+
+            <p><span style="color: #000000;">Big O notation is a mathematical tool used to describe the growth rate of a function as its input becomes very large. In other words, it captures how quickly a function grows in the long run, ignoring small details. Formally, we say f(n) &in; O(g(n)) if there are constants c &in; &Ropf;<sup>+</sup> c &gt; 0 and n<sub>0</sub> &in; &Nopf; such that f(n) &le; c &middot; g(n) for all n &ge; n<sub>0</sub>. The capital "O" is derived from the German word "Ordnung" for order, referring to the order of approximation.</p>
+
+            <p style="text-align: center;"><img style="max-width: 30%; height: auto;" src="./images/mod11/bigo.png"></p>
+
+            <p><span style="color: #000000;">When comparing two power functions, look only at their exponents. For example: n<sup>3</sup> grows faster than n<sup>2</sup>, so n<sup>2</sup> &in; O(n<sup>3</sup>). So if r &lt; s, then x<sup>r</sup> &in; O(x<sup>r</sup>).</p>
+
+            <p style="text-align: center;"><img style="max-width: 30%; height: auto;" src="./images/mod11/poly.png"></p>
+
+            <p>Common growth rates (from slowest to fastest):</p>
+
+            <p><img style="max-width: 30%; height: auto;" src="./images/mod11/functions.png"></p>
+
+            <table style="border-collapse: collapse;" cellpadding="5", border="1">
+                <tr>
+                    <td><span style="font-size: 14pt;">O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n<sup>2</sup>) &lt; O(2<sup>n</sup>) &lt; O(n!)</span></td>
+                </tr>
+            </table>
+    
+            <p>You don't need to memorize this list; a <a href="./files/FormulaSheet.pdf">formula sheet</a> will be provided to you at all assessments during the course.</em></p>
+
+            <p>&nbsp;</p>
+
+            <p>An informal approximation to check if f(n) &in; O(g(n)) when g(n) is a one-term function with no constants is:</p>
+
+            <ul>
+                <li>If f(n) is a sum, drop all low-order terms</li>
+                <li>If there are constants multiplying the dominant term, drop them too</li>
+                <li>The remaining term gives you the big O</li>
+            </ul>
+
+            <table style="border-collapse: collapse;" cellpadding="5", border="1">
+                <tr>
+                    <td>5n log<sub>2</sub> n + 2n<sup>4</sup> + 1000</td>
+                    <td>original function f(n)</td>
+                </tr>
+                <tr>
+                    <td>2n<sup>4</sup></td>
+                    <td>eliminating low-order terms</td>
+                </tr>
+                <tr>
+                    <td>n<sup>4</sup></td>
+                    <td>eliminating constant</td>
+                </tr>
+                <tr>
+                    <td>n<sup>4</sup></td>
+                    <td>new function g(n)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">f(n) &in; O(g(n)) &rArr; 5n log<sub>2</sub> n + 2n<sup>4</sup>  + 1000 &in; O(n<sup>4</sup>)</td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <h3>Big O proofs</h3>
+
+            <p>The formal definition of Big-O is expressed using the following predicate.</p>
+
+            <p style="text-align: center; font-size: 20px;">&exist;c &in; &Ropf;<sup>+</sup>, &exist;n<sub>0</sub> &in; &Nopf;, &forall;n &in; &Nopf;, n &ge; n<sub>0</sub> &rarr; f(n) &le; c &middot; g(n)</p>
+
+            <p>When proving a statement about Big-O, we can apply the same strategy used in Direct Proofs (Module 7). Specifically, we should examine the quantifiers associated with each variable to determine their role in the proof and use our understanding of implication to decide what assumptions to make.</p>
+
+            <p>Another key idea is that our conclusion involves an <strong>inequality</strong> rather than an equality. This provides flexibility in manipulating the functions. Since we do not need f(n) to be exactly equal to g(n), we can instead make f(n) larger in a controlled way, creating a function that bounds f(n) from above; the role we want g(n) to play. For example, if we know 2x=y for natural numbers x and y, then adding 1 to the right-hand side gives 2x &lt; y+1. We use this same kind of reasoning when constructing proofs involving Big-O. We will use this idea when doing our proof:</p>
+
+            <ul>
+                <li>Start by choosing c and n<sub>0</sub>. Initially, you may not know the exact values, but you'll refine them as you work through the proof.</li>
+                <li>"There exists" (c, n<sub>0</sub>) means we must choose specific values.</li>
+                <li>"For all" (n) means our reasoning must hold for every n.</li>
+                <li>Assume the left-hand side of the implication, stating that n &ge; n<sub>0</sub></li>
+                <li>State that f (n) = f (n), never assume f(n) &le; c &middot; g(n) at the start. That's what we're trying to prove.</li>
+                <li>Since we only need f(n) to be bounded above, we can replace it with a bigger (but simpler) expression, making it easier to compare to g(n).</li>
+            </ul>
+
+            <p>Indicate the value of n<sub>0</sub> at the beginning of the proof. This value should be the largest lower bound required by the justified steps. Keep each algebraic step small and clearly justified, unless the reasoning is immediately obvious. Always check that each step holds for all values of n in the specified range.</p>
+
+            <table style="border-collapse: collapse; width: 65.5882%; background-color: #c8c8c8;" border="2">
+                <tr>
+                    <td>
+                        <p>Prove that f(n) &in; O(g(n)), for f(n) = 15n + 18 and g(n) = 10n<sup>5</sup> + 6n.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><strong>Proof:</strong></p>
+                        <p>
+                            Choose c = 3 and n<sub>0</sub> = 1<br />
+                            Consider an unspecified natural number n &ge; n0.
+                        </p>
+                        <p>
+                            f(n) = 15n + 18<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &le; 15n.n<sup>4</sup> + 18<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &le; 15n.n<sup>4</sup> + 18n, for n &ge; 1<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &le; 15n.n<sup>4</sup>.2 + 18n<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 30n.n<sup>4</sup> + 18n<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3(10n.n<sup>4</sup> + 6n)<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3g(n)
+                        </p>
+                        <p >Therefore, f(n) &le; 3 &middot; g(n), for n &ge; 1</p>
+                        <p><span style="color: #000000;">&#9724;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: #ffffff;">
+                        <p>Although the proof begins by fixing the constants c=3 and n0=1, these values are actually determined only after completing the argument. We start with the function f(n) = 15n+18. The goal is to transform it into a form that can be directly compared with g(n)=10n<sup>5</sup>+6n.</p>
+                        <p>To do this, observe that for natural numbers n, multiplying n by n<sup>4</sup> produces a value greater than or equal to n. Hence, 15n &le; 15n<sup>5</sup>. Similarly, when n &ge; 1, then 18 &le; 18n.&nbsp;At this stage, the expression has a form similar to g(n). Factoring, we get 15n<sup>5</sup>+18n = 3(5n<sup>5</sup>+6n). The term inside the parentheses is exactly g(n). Therefore, f(n) &le; 3g(n), which establishes c=3.</p>
+                        <p>Finally, we verify the range of n for which all steps are valid. Although some steps remain true when n=0, the inequalities involving 18&le;18n hold only when n &ge; 1. Thus, we must take n<sub>0</sub>=1 as the lower bound of n.</p>
+                    </td>
+                </tr>
+            </table>
+
+        <hr />
+
+        <h2>Von-Neumann Architecture</h2>
+
+            <p>The von Neumann architecture is a foundational computer design model where both program instructions and data share the same memory. This model features a Central Processing Unit (CPU) with an Arithmetic Logic Unit (ALU) and control unit, a memory unit, and input/output mechanisms, all connected by buses.</p>
+
+            <p style="text-align: center;"><img style="max-width: 45%; height: auto;" src="./images/mod11/von.png"></p>
+
+            <h3>Central Processing Unit (CPU)</h3>
+
+            <p>It is composed of three main parts:</p>
+
+            <ul>
+                <li>
+                    <p>Arithmetic Logic Unit (ALU): Performs arithmetic (addition, subtraction, etc.) and logic (AND, OR, comparisons). Each operation is identified by an opcode. The ALU can also detect overflow or other status conditions.</p>
+                </li>
+                <li>
+                    <p>Control Unit: Directs the flow of execution. It fetches instructions from memory and manages other components. It contains the <strong>Program Counter (PC)</strong>, which holds the address of the next instruction.</p>
+                </li>
+                <li>
+                    <p>Registers: Small, ultra-fast storage inside the CPU for data being used immediately. Because registers are limited in size, the CPU frequently reads from and writes to memory.</p>
+                </li>
+            </ul>
+
+            <h3>Input/Output (I/O) Mechanisms</h3>
+
+            <p>Provide communication between the computer and the outside world. This includes any type of data that can be given to the computer, including the keyboard, the mouse, microphones, and touchscreens, and any type of data the computer can give us back, including the screen, speaker, and vibration motors.</p>
+
+            <h3>Memory Unit</h3>
+
+            <p>Memory stores both the program instructions and the data that the CPU processes. It is organized into a series of memory locations, similar to a list or array, where each location holds a fixed number of bits; most commonly 8 bits (1 byte). Values that require more than 8 bits are stored across multiple consecutive memory locations.</p>
+
+            <p>Each location is identified by an index called an address, while the contents of that location represent the data. Both addresses and data are represented in binary. In a 32-bit computer, addresses are 32 bits long, allowing for 2<<sup>32</sup> unique addresses (about 4 GB of addressable memory). In contrast, a 64-bit computer uses 64-bit addresses, providing up to 2<sup>64</sup> unique addresses (about 18 exabytes, or 18 EB&sim;1.8&middot;1010 GB).</p>
+
+            <p style="text-align: center;"><img style="max-width: 70%; height: auto;" src="./images/mod11/mem.png"></p>
+
+            <p>In this example, the address 0x1000 in this memory stores 0x48 (or 01001000 in binary), which represents the character H in ASCII code and the address 0x1001 stores 0x69 (or 01101001 in binary), which represents the character i in ASCII code. The address 0x1002 has the integer 42108 represented as a 32-bit unsigned integer as 0x0000A4AC using 4 memory spaces. Finally, the address 0x1006 has the integer -5 represented as a 8-bit unsigned integer as 0xFB using only 1 memory space.</p>
+
+            <h3>Machine code</h3>
+
+            <p>Computers must translate programming languages into binary in order to execute them. This translation is typically handled by a compiler, which converts source code into machine code or assembly language; forms that can be directly interpreted as binary by the computer. In the early days of computing, programmers wrote directly in machine or assembly language, which is difficult to read and relies heavily on symbols rather than English words.</p>
+
+            <p>Each processor has its own unique set of instructions. Programmers often rely on manuals that specify which instructions are supported, their names, and the required order of their arguments. The examples in this section illustrate a small subset of the IA-32 (Intel 32-bit) instruction set architecture.</p>
+
+            <p>In this architeture, each instruction type is identified by a 4-bit sequence. The following 4 bits may then take on different meanings depending on the instruction type. For readability, these binary sequences are typically written in hexadecimal, where each digit represents exactly 4 bits. The specific encoding and interpretation of these instructions are determined by the processor's designers and cannot be altered.</p>
+
+            <h4>Moves</h4>
+
+            <p>These are instructions that move data to and from registers.</p>
+
+            <p>Example: <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>irmovl 0xA2, %edx</b></span></p>
+
+            <p>This instruction stores a constant (A2 or 162 in decimal) in a register (called %edx, register names are given by the processor and cannot be changed).</p>
+
+            <p>In hexadecimal this instruction is represented as 30 F2 00 00 00 A2:</p>
+
+            <table style="border-collapse: collapse;" cellpadding="3", border="1">
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">3</td>
+                    <td>means this is a move instruction</td>
+                </tr>
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">0</td>
+                    <td>means we are moving a constant to a register</td>
+                </tr>
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">F</td>
+                    <td>not used, so it always F by default</td>
+                </tr>
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">2</td>
+                    <td>means register %edx</td>
+                </tr>
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">000000A2</td>
+                    <td>is the constant to be stored</td>
+                </tr>
+            </table>
+
+            <h4>Operations</h4>
+
+            <p>These instructions calculate arithmetic and logic operations between constants and/or values in the registers.</p>
+
+            <p>Example: <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>addl %eax, %ebx</b></span></p>
+
+            <p>This instruction adds its arguments, so it does ebx= eax+ebx (the order and number of the terms is given by the processor and cannot be changed, so it is not possible to do ecx= eax+ebx, for example)</p>
+
+            <p>In hexadecimal this instruction is represented as 60 03:</p>
+
+            <table style="border-collapse: collapse;" cellpadding="3", border="1">
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">6</td>
+                    <td>means this is an arithmetic or logical operation instruction</td>
+                </tr>
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">0</td>
+                    <td>means the operation is an addition</td>
+                </tr>
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">0</td>
+                    <td>means register %eax</td>
+                </tr>
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">3</td>
+                    <td>means register %ebx</td>
+                </tr>
+            </table>
+
+            <h4>Branches or Jumps</h4>
+
+            <p>These instructions modify the order in which instructions are executed, enabling loops and conditional behavior. Unlike high-level languages, machine code does not have constructs such as repeat, for, while, if, or else. Instead, these instructions change the value of the program counter (PC) based on the result of the previous arithmetic or logical operation.</p>
+
+            <p>Example: <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>jne label</b></span></p>
+
+            <p>This instruction (short for "jump if not equal") transfers execution to the instruction at the specified label if the result of the previous operation was not zero. If the result was zero, execution continues with the next instruction in sequence.</p>
+
+            <p>In hexadecimal this instruction is represented as 74 00 00 CA FE:</p>
+
+            <table style="border-collapse: collapse;" cellpadding="3", border="1">
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">7</td>
+                    <td>means this is a jump instruction</td>
+                </tr>
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">4</td>
+                    <td>means the condition is "not equal to 0"</td>
+                </tr>
+                <tr>
+                    <td style="width: 22.96%; text-align: center;">0000CAFE</td>
+                    <td>is the value of the label (the address of the instruction to be executed)</td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <h3>Execution stages</h3>
+
+            <p>The CPU divides the execution into 5 stages:</p>
+
+            <ul>
+                <li>Fetch/Decode: read instruction and decide on new PC value</li>
+                <li>Execute: read values from registers and use the ALU to perform computations</li>
+                <li>Memory: read data from or write data to memory</li>
+                <li>Write-back: store value(s) into register(s).</li>
+                <li>PC update: store the new PC value.</li>
+            </ul>
+
+            <p>For each instruction the computer will execute each step, until the expect result happens.</p>
+
+            <p>For <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>irmovl 0xA2, %edx<br /></b></span></p>
+
+            <ul>
+                <li>Fetch/Decode: read 30F2000000A2 and update PC by 6, since the instruction has 6 bytes</li>
+                <li>Execute: determine the contant is 000000A2</li>
+                <li>Memory: no action</li>
+                <li>Write-back: store 000000A2 in register %edx</li>
+                <li>PC update: update PC to execute the next instruction that is 6 bytes ahead in the memory</li>
+            </ul>
+
+            <p>For <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>addl %eax, %ebx</b></span></p>
+
+            <ul>
+                <li>Fetch/Decode: read 6003 and update PC by 2, since the instruction has 2 bytes</li>
+                <li>Execute: compute %eax+%ebx</li>
+                <li>Memory: no action</li>
+                <li>Write-back: store the result in register %ebx</li>
+                <li>PC update: update PC to execute the next instruction that is 2 bytes ahead in the memory</li>
+            </ul>
+
+            <p>For <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>jne label</b></span></p>
+
+            <ul>
+                <li>Fetch/Decode: read 740000CAFE and update PC by 5, since the instruction has 5 bytes</li>
+                <li>Execute: compare last operation result with 0</li>
+                <li>Memory: no action</li>
+                <li>Write-back: no action</li>
+                <li>PC update: if the last result was 0, the new value of PC is 5 bytes ahead, if it was not equal to 0, the next value of PC is 0000CAFE</li>
+            </ul>
+
+            <p>&nbsp;</p>
+
+            <h3>Sample Program</h3>
+
+            <p>Let's see how this sample program is executed:</p>
+
+            <table style="border-collapse: collapse; background-color: #cccccc;" cellpadding="3", border="1">
+                <tr>
+                    <td>
+                        <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>label:&nbsp; irmovl 0x0A, %eax</b></span>
+                            &nbsp; &nbsp; &nbsp; &nbsp;# Load 10 into EAX<br />
+                        <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>&nbsp; &nbsp; &nbsp; &nbsp; irmovl 0x05, %ebx</b></span>
+                            &nbsp; &nbsp; &nbsp; &nbsp;# Load 5 into EBX<br />
+                        <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>&nbsp; &nbsp; &nbsp; &nbsp; addl %ebx, %eax</b></span>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# EAX = EAX + EBX<br />
+                        <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>&nbsp; &nbsp; &nbsp; &nbsp; jne label</b></span>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# Jump to label if != 0<br />
+                        <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>&nbsp; &nbsp; &nbsp; &nbsp; halt</b></span>
+                    </td>
+                </tr>
+            </table>
+
+            <p>Let's assume that it is stored in the memory in the following way:</p>
+
+            <table style="border-collapse: collapse; width: 101.451%;" border="1">
+                <tr>
+                    <td style="text-align: center; width: 29.7471%;" colspan="6">irmovl 0x0A, %eax</td>
+                    <td style="text-align: center; width: 30.0446%;" colspan="6">irmovl 0x05, %ebx</td>
+                    <td style="text-align: center; width: 10.4115%;" colspan="2">addl %ebx, %eax</td>
+                    <td style="text-align: center; width: 24.7893%;" colspan="5">jne label</td>
+                    <td style="width: 4.95786%; text-align: center;">halt</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; width: 29.7471%;" colspan="6">30F00000000A</td>
+                    <td style="text-align: center; width: 30.0446%;" colspan="6">30F300000005</td>
+                    <td style="text-align: center; width: 10.4115%;" colspan="2">6030</td>
+                    <td style="text-align: center; width: 24.7893%;" colspan="5">7400000200</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                </tr>
+                <tr>
+                    <td style="width: 4.95786%; text-align: center;">30</td>
+                    <td style="width: 4.95786%; text-align: center;">F0</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                    <td style="width: 4.95786%; text-align: center;">0A</td>
+                    <td style="width: 4.95786%; text-align: center;">30</td>
+                    <td style="width: 4.95786%; text-align: center;">F3</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                    <td style="width: 5.15617%; text-align: center;">00</td>
+                    <td style="width: 5.05702%; text-align: center;">05</td>
+                    <td style="width: 5.15617%; text-align: center;">60</td>
+                    <td style="width: 5.25533%; text-align: center;">30</td>
+                    <td style="width: 4.95786%; text-align: center;">74</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                    <td style="width: 4.95786%; text-align: center;">02</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                    <td style="width: 4.95786%; text-align: center;">00</td>
+                </tr>
+                <tr>
+                    <td style="width: 4.95786%; text-align: center;">0x200</td>
+                    <td style="width: 4.95786%; text-align: center;">0x201</td>
+                    <td style="width: 4.95786%; text-align: center;">0x202</td>
+                    <td style="width: 4.95786%; text-align: center;">0x203</td>
+                    <td style="width: 4.95786%; text-align: center;">0x204</td>
+                    <td style="width: 4.95786%; text-align: center;">0x205</td>
+                    <td style="width: 4.95786%; text-align: center;">0x206</td>
+                    <td style="width: 4.95786%; text-align: center;">0x207</td>
+                    <td style="width: 4.95786%; text-align: center;">0x208</td>
+                    <td style="width: 4.95786%; text-align: center;">0x209</td>
+                    <td style="width: 5.15617%; text-align: center;">0x20A</td>
+                    <td style="width: 5.05702%; text-align: center;">0x20B</td>
+                    <td style="width: 5.15617%; text-align: center;">0x20C</td>
+                    <td style="width: 5.25533%; text-align: center;">0x20D</td>
+                    <td style="width: 4.95786%; text-align: center;">0x20E</td>
+                    <td style="width: 4.95786%; text-align: center;">0x20F</td>
+                    <td style="width: 4.95786%; text-align: center;">0x210</td>
+                    <td style="width: 4.95786%; text-align: center;">0x211</td>
+                    <td style="width: 4.95786%; text-align: center;">0x212</td>
+                    <td style="width: 4.95786%; text-align: center;">0x213</td>
+                </tr>
+            </table>
+
+            <p>The program starts with PC = 0x200 and executes the first irmovl instruction, which loads the value 10 into register %eax. The PC is then updated to 0x206 because this instruction is 6 bytes long. Next, the program executes the second irmovl instruction located at this memory address, which loads the value 5 into register %ebx and updates PC to 0x20C, as this instruction is also 6 bytes long.</p>
+
+            <p>The instruction at PC = 0x20C is addl. This instruction adds %ebx to %eax, updating %eax with the value 10 + 5 = 15, and updates PC to 0x20E (the addl instruction is 2 bytes).</p>
+
+            <p>The instruction at PC = 0x20E is a conditional jump. It checks whether %eax is not equal to 0. Since the last instruction result was 15, the jump is not taken, and PC is updated to 0x213. Finally, the halt instruction stops program execution.</p>
+
+            <p>This program performs one addition and halts because the result of the addition was positive. If the sum of %eax and %ebx had been 0, the jump would have been taken, and PC would be updated to the address of the label, which is 0x200. At that memory location is the first instruction, which would then execute again, creating a loop.</p>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</p>
+
+            <ul>
+                <li><p>5th edition: 11.2</p></li>
+                <li><p>4th edition: 11.2</p></li>
+                <li><p>3rd edition: 9.2</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>

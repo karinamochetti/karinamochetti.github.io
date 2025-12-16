@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 06</title>
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "menu content";
+            height: 100vh;
+        }
+        .left-menu {
+            grid-area: menu;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .main-content {
+            grid-area: content;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .left-menu li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
+        }
+        .left-menu li a:hover {
+            background-color: #575757;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Left Menu Section -->
+    <aside class="left-menu">
+        <h2>CPSC 121</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mod01.html">Module 01</a></li>
+                <li><a href="mod02.html">Module 02</a></li>
+                <li><a href="mod03.html">Module 03</a></li>
+                <li><a href="mod04.html">Module 04</a></li>
+                <li><a href="mod05.html">Module 05</a></li>
+                <li><a href="mod06.html">Module 06</a></li>
+                <li><a href="mod07.html">Module 07</a></li>
+                <li><a href="mod08.html">Module 08</a></li>
+                <li><a href="mod09.html">Module 09</a></li>
+                <li><a href="mod10.html">Module 10</a></li>
+                <li><a href="mod11.html">Module 11</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+
+    <h1> Module 06: Propositional Logic</h1>
+
+        <h2>Regular Expression (Regex)</h2>
+
+            <p>In formal language theory, an <strong>alphabet</strong> is a finite set of characters. A <strong>string</strong> is a finite list of elements formed using elements from this alphabet, and a <strong>language</strong> is a set of such strings. For example, in English the alphabet includes letters like "a", "b", and "c", and these letters combine to form valid strings such as "cat" or "dog". A string is said to be <strong>accepted</strong> by a language if it belongs to that language's set of valid strings. So while "dog" is part of the English language, "cachorro" is not.</p>
+
+            <p>Although an alphabet must contain at least one character, a string can be empty. This <strong>empty string</strong> is typically denoted by the Greek letter epsilon (&epsilon;), and whether or not it is accepted depends on the rules of the language in question.</p>
+
+            <p>A <strong>regular expression</strong>, or regex, is a compact and powerful way of describing which strings a language accepts. The three foundational operations used in regex, which are sufficient to define any language, include concatenation, repetition, and alternation.</p>
+
+            <ul>
+                <li>
+                    <span style="text-decoration: underline;">Concatenation:</span> characters are placed next to each other to indicate that they must appear in that exact order.<br />
+                    Example: <strong>ab</strong><br />
+                    &nbsp; &nbsp; &nbsp;Accepts: "ab"<br />
+                    &nbsp; &nbsp; &nbsp;Rejects: "a" "b" "ba" "abab" "abb"<br />
+                    <br />
+                </li>
+                <li>
+                    <span style="text-decoration: underline;">Repetition (star *):</span> indicates that the preceding element can appear zero or more times.<br />
+                    Example: <strong>ab*</strong><br />
+                    &nbsp; &nbsp; &nbsp;Accepts: "a" "ab" "abb" "abbb"<br />
+                    &nbsp; &nbsp; &nbsp;Rejects: "b" "ba" "aba" "abab"<br />
+                    <br />
+                </li>
+                <li>
+                    <span style="text-decoration: underline;">Alternation (pipe |):</span> indicates a choice, allowing the pattern to match one of several alternatives separated by pipes.<br />
+                    Example: <strong>(a|b|ab)</strong><br />
+                    &nbsp; &nbsp; &nbsp;Accepts: "a" "ab" "b"<br />
+                    &nbsp; &nbsp; &nbsp;Rejects: "aba" "ba" "abb" "abab"<br />
+                </li>
+            </ul>
+
+            <p>Notice that we use round brackets for grouping. Otherwise, * has high precedence and so applies to the immediately preceding element; so, ab* is the same as a(b*) but not (ab)*. Also, | has low precedence and so applies to as much as it can; so, ab|c is the same as (ab)|c and not a(b|c).</span></p>
+
+            <p>Several other regex operations enhance expressiveness.</p>
+
+            <ul>
+                <li>
+                    <span style="text-decoration: underline;">Period .:</span> serves as a wildcard for any single character.<br />
+                    Example: <strong>a.b</strong><br />
+                    &nbsp; &nbsp; &nbsp;Accepts: "aab" "abb"<br />
+                    &nbsp; &nbsp; &nbsp;Rejects: "a" "b" "ba" "ab"<br />
+                    <br />
+                </li>
+                <li>
+                    <span style="text-decoration: underline;">Plus +:</span> indicates that the preceding character appears at least once, while with the star <strong>*</strong> it could appear zero times.<br />
+                    Example: <strong>ab+</strong><br />
+                    &nbsp; &nbsp; &nbsp;Accepts: "ab" "abb" "abbb"<br />
+                    &nbsp; &nbsp; &nbsp;Rejects: "b" "ba" "aba" "abab" "a"<br />
+                    <br />
+                </li>
+                <li>
+                    <span style="text-decoration: underline;">Question Mark ?:</span> indicates that the previous item can appear exactly 0 or 1 times.<br />
+                    Example: <strong>a(ab)?b</strong><br />
+                    &nbsp; &nbsp; &nbsp;Accepts: "ab" "aabb"<br />
+                    &nbsp; &nbsp; &nbsp;Rejects: "aba" "ba" "abb" "abab" "a" "b"<br />
+                    <br />
+                </li>
+                <li>
+                    <span style="text-decoration: underline;">Square Brackets []:</span> replaces a pipe if all items options have exactly 1 charater.<br />
+                    Example: <strong>[abc]</strong><br />
+                    &nbsp; &nbsp; &nbsp;Accepts: "a" "b" "c"<br />
+                    &nbsp; &nbsp; &nbsp;Rejects: "ab" "abc" "bc" "ac"<br />
+                    Be careful: a regex like (ab) means "a" followed by "b" while [ab] means a single character that is either an "a" or a "b".<br />
+                    <br />
+                </li>
+                <li>
+                    <span style="text-decoration: underline;">Curly Brackets {}:</span> specifies a range that gives the number of times an item may appear.<br />
+                    Example: <strong>ab{1,5}</strong><br />
+                    &nbsp; &nbsp; &nbsp;Accepts: "ab" "abb" "abbb" "abbbb" "abbbbb"<br />
+                    &nbsp; &nbsp; &nbsp;Rejects: "a" "abbbbbb" "abab"<br />
+                    <br />
+                </li>
+                <li>
+                    <span style="text-decoration: underline;">Backslash \:</span> allows an item to be a character that is used as a special character in a regex.<br />
+                    Example: <strong>a+\+b+</strong><br />
+                    &nbsp; &nbsp; &nbsp;Accepts: "a+b" "aa+b" "a+bb" "aa+bb"<br />
+                    &nbsp; &nbsp; &nbsp;Rejects: "ab" "+" "a+" "b+" "aabb"
+                </li>
+            </ul>
+
+            <p>To see these ideas in practice, consider the expression <strong>a(b|c)*</strong>. This pattern accepts strings that start with "a" and are followed by any number (including zero) of "b" or "c" characters. Valid strings include "a", "ab", "ac", "abbc", and "abcbcc" while invalid examples include "b", "aa", "cb", and "abcab", since they do not adhere to the structure defined by the expression.</p>
+
+        <hr />
+        
+        <h2>DFAs and NFAs</h2>
+
+            <p>Another, more visual, way of describing which strings a language accepts is by using an automaton. An automaton consists of a set of states, and transitions between these states are determined by the characters. As you read each character of a string from left to right, you move between states according to the character being processed. For example, starting from state s0, the string "ab" would end in state s1, while "ba" would end in state s3.</p>
+
+            <p style="text-align: center;">
+                <img style="max-width: 35%; height: auto;" src="./images/mod06/dfaA.gif">
+                <img style="max-width: 35%; height: auto;" src="./images/mod06/dfaB.gif">
+            </p>
+
+            <p>An automaton can be either deterministic (also known as a <strong>DFA</strong>) or non-deterministic (also known as an <strong>NFA</strong>).</p>
+
+            <h3>DFA</h3>
+
+            <p>A deterministic finite automaton, or <strong>DFA</strong>, has a single initial state and one or more accepting states, which are typically indicated using a double circle in diagrams. The DFA always begins at the initial state, processes each character in the string in order, and finishes at a final state after the last letter is processed. If this final state is accepting, the string is considered accepted by the language.</p>
+
+            <p>In a DFA, each state must have exactly one transition for every character in the alphabet. For example, if the alphabet contains only the characters "a" and "b", then each state must have exactly one outgoing transition labeled "a" and exactly one outgoing transition labeled "b". No transition can exist without a label.</p>
+
+            <p>DFAs and regexes are equivalent in power, meaning any pattern that can be described using a regex can also be accepted by a DFA. The following DFA, for example, is equivalent to the regex <strong>a(b|c)*</strong>, since it accepts the exact same set of strings.</p>
+
+            <p style="text-align: center;"><img style="max-width: 20%; height: auto;" src="./images/mod06/dfa.png"></p>
+
+            <p>The string 'abcbcc' is accepted since we finish at an accepting state when running it through the DFA: <br />
+            s0 &nbsp;&nbsp;<sub>a</sub>&rarr;&nbsp;&nbsp; 
+            s1 &nbsp;&nbsp;<sub>b</sub>&rarr;&nbsp;&nbsp;
+            s1 &nbsp;&nbsp;<sub>c</sub>&rarr;&nbsp;&nbsp;
+            s1 &nbsp;&nbsp;<sub>b</sub>&rarr;&nbsp;&nbsp; 
+            s1 &nbsp;&nbsp;<sub>c</sub>&rarr;&nbsp;&nbsp;
+            s1 &nbsp;&nbsp;<sub>c</sub>&rarr;&nbsp;&nbsp;
+            s1 (and s1 is an accepting state).</p>
+
+            <p>The string 'abcab' is not accepted since we do not finish at an accepting state when running it through the DFA: <br />
+            s0 &nbsp;&nbsp;<sub>a</sub>&rarr;&nbsp;&nbsp;
+            s1 &nbsp;&nbsp;<sub>b</sub>&rarr;&nbsp;&nbsp;
+            s1 &nbsp;&nbsp;<sub>c</sub>&rarr;&nbsp;&nbsp;
+            s1 &nbsp;&nbsp;<sub>a</sub>&rarr;&nbsp;&nbsp;
+            s2 &nbsp;&nbsp;<sub>b</sub>&rarr;&nbsp;&nbsp;
+            s2 (and s2 is not an accepting state).</p>
+
+            <h3>NFA</h3>
+
+            <p>Unlike DFAs, nondeterministic finite automata (<strong>NFAs</strong>) can have multiple transitions for the same input symbol from a single state. They also allow transitions that occur without consuming an input symbol, known as epsilon transitions (labeled &epsilon;). An NFA accepts a string if at least one sequence of transitions leads to an accepting state, even if other possible sequences do not.</p>
+
+            <p style="text-align: center;"><img style="max-width: 20%; height: auto;" src="./images/mod06/nfa.png"></p>
+
+            <p>The string 'abcab' is accepted by this NFA since we can finish at an accepting state, although there are other choices that may lead to a non-accepting state: <br />
+            s0 &nbsp;&nbsp;<sub>a</sub>&rarr;&nbsp;&nbsp; 
+            s1 &nbsp;&nbsp;<sub>b</sub>&rarr;&nbsp;&nbsp; 
+            s1 &nbsp;&nbsp;<sub>c</sub>&rarr;&nbsp;&nbsp;
+            s1 &nbsp;&nbsp;<sub>a</sub>&rarr;&nbsp;&nbsp;
+            s2 &nbsp;&nbsp;<sub>b</sub>&rarr;&nbsp;&nbsp;
+            s1 (and s1 is an accepting state).</p>
+
+            <p>The string 'aa' is also accepted by using the empty string arrow:<br />
+            s0 &nbsp;&nbsp;<sub>a</sub>&rarr;&nbsp;&nbsp;
+            s1  &nbsp;&nbsp;<sub>&epsilon;</sub>&rarr;&nbsp;&nbsp;
+            s0 &nbsp;&nbsp;<sub>a</sub>&rarr;&nbsp;&nbsp;
+            s1 (and s1 is an accepting state).</p>
+
+        <hr />
+        
+        <h2>Sequential Circuits</h2>
+
+            <p>While <strong>combinational circuits</strong> produce outputs based solely on current inputs, <strong>sequential circuits</strong> also consider previous outputs. In other words, they incorporate memory of past events, making them time-sensitive systems.</p>
+
+            <table style="border-collapse: collapse; width: 100%;" border="0">
+                <tr>
+                    <td style="text-align: center;"><img style="max-width: 70%; height: auto;" src="./images/mod06/comb.png"></td>
+                    <td style="text-align: center;"><img style="max-width: 70%; height: auto;" src="./images/mod06/seq.png"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">Combinational circuit</td>
+                    <td style="text-align: center;">Sequential circuit</td>
+                </tr>
+            </table>
+
+
+            <p>In a sequential circuit, time is a critical factor because the output depends not only on the current inputs but also on past outputs. To distinguish between past and present states, sequential circuits rely on a special input signal called a <strong>clock</strong>. A clock is a periodic signal that alternates between 0 and 1 at a fixed frequency. Each cycle of the clock defines a new moment in time. When the clock changes, typically on a rising edge (from 0 to 1), the circuit transitions to a new state. The<strong> </strong>previous output is the state before the clock edge, and the new output is the result after the transition.</p>
+
+            <p>While sequential circuits use all the components of combinational circuits (like logic gates), they also include elements unique to their design, such as the <strong>flip-flop</strong>. A flip-flop is a storage device that updates its output only on the rising edge of the clock signal. It ignores any changes in its input until that moment. When the clock transitions from 0 to 1, the flip-flop captures the current input and updates its output accordingly. It then holds this output constant, regardless of further input changes, until the next clock edge.</p>
+
+            <p style="text-align: center;"><img style="max-width: 40%; height: auto;" src="./images/mod06/circuit.gif"></p>
+
+            <p>If a circuit has many flip-flops connected to the same clock, they all update simultaneously. That means each one updates based only on the old values going into its input and ignoring any updates it or the other flip-flops may perform.</p>
+
+            <p>DFAs can be translated into sequential circuits using the following algorithm:</p>
+
+            <ol>
+                <li>Each state is going to be represented by a binary number, where one flip-flop will represent each of the bits in the number.</li>
+                <li>A state table is created describing the DFA's transitions between states.</li>
+                <li>The flip-flops' outputs will be given by the accepted states.</li>
+                <li>The flip-flops' inputs will be given by multiplexers choosing between the input, the negation of the input, the constant False, and the constant True.</li>
+                <li>A final proposition is created based on the truth table of all flip-flop outputs.</li>
+                <li>Everything is connected, finishing the circuit.</li>
+            </ol>
+
+            <p>This algorithm is detailed with an example in the screencast from Lab 07, called DFA to Circuit.</p>
+
+        <hr />
+
+        <h2>Read More</h2>
+
+            <p>Epp, Susanna. Discrete Mathematics with Applications.</span></p>
+
+            <ul>
+                <li><p>5th edition: 12.1 and 12.2</span></p></li>
+                <li><p>4th edition: 12.1 and 12.2</p></li>
+                <li><p>3rd edition: 12.1 and 12.2</p></li>
+            </ul>
+
+    </main>
+
+</body>
+</html>
