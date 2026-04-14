@@ -383,8 +383,8 @@
                             &nbsp; &nbsp; &nbsp; &nbsp;# Load 5 into EBX<br />
                         <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>&nbsp; &nbsp; &nbsp; &nbsp; addl %ebx, %eax</b></span>
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# EAX = EAX + EBX<br />
-                        <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>&nbsp; &nbsp; &nbsp; &nbsp; jne label</b></span>
-                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# Jump to label if != 0<br />
+                        <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>&nbsp; &nbsp; &nbsp; &nbsp; je label</b></span>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# Jump to label if == 0<br />
                         <span style="background-color: #cccccc; font-family: 'Courier New', Courier, monospace;"><b>&nbsp; &nbsp; &nbsp; &nbsp; halt</b></span>
                     </td>
                 </tr>
@@ -397,14 +397,14 @@
                     <td style="text-align: center; width: 29.7471%;" colspan="6">irmovl 0x0A, %eax</td>
                     <td style="text-align: center; width: 30.0446%;" colspan="6">irmovl 0x05, %ebx</td>
                     <td style="text-align: center; width: 10.4115%;" colspan="2">addl %ebx, %eax</td>
-                    <td style="text-align: center; width: 24.7893%;" colspan="5">jne label</td>
+                    <td style="text-align: center; width: 24.7893%;" colspan="5">je label</td>
                     <td style="width: 4.95786%; text-align: center;">halt</td>
                 </tr>
                 <tr>
                     <td style="text-align: center; width: 29.7471%;" colspan="6">30F00000000A</td>
                     <td style="text-align: center; width: 30.0446%;" colspan="6">30F300000005</td>
                     <td style="text-align: center; width: 10.4115%;" colspan="2">6030</td>
-                    <td style="text-align: center; width: 24.7893%;" colspan="5">7400000200</td>
+                    <td style="text-align: center; width: 24.7893%;" colspan="5">7300000200</td>
                     <td style="width: 4.95786%; text-align: center;">00</td>
                 </tr>
                 <tr>
@@ -422,7 +422,7 @@
                     <td style="width: 5.05702%; text-align: center;">05</td>
                     <td style="width: 5.15617%; text-align: center;">60</td>
                     <td style="width: 5.25533%; text-align: center;">30</td>
-                    <td style="width: 4.95786%; text-align: center;">74</td>
+                    <td style="width: 4.95786%; text-align: center;">73</td>
                     <td style="width: 4.95786%; text-align: center;">00</td>
                     <td style="width: 4.95786%; text-align: center;">00</td>
                     <td style="width: 4.95786%; text-align: center;">02</td>
@@ -457,7 +457,7 @@
 
             <p>The instruction at PC = 0x20C is addl. This instruction adds %ebx to %eax, updating %eax with the value 10 + 5 = 15, and updates PC to 0x20E (the addl instruction is 2 bytes).</p>
 
-            <p>The instruction at PC = 0x20E is a conditional jump. It checks whether %eax is not equal to 0. Since the last instruction result was 15, the jump is not taken, and PC is updated to 0x213. Finally, the halt instruction stops program execution.</p>
+            <p>The instruction at PC = 0x20E is a conditional jump. It checks whether %eax is equal to 0. Since the last instruction result was 15, the jump is not taken, and PC is updated to 0x213. Finally, the halt instruction stops program execution.</p>
 
             <p>This program performs one addition and halts because the result of the addition was positive. If the sum of %eax and %ebx had been 0, the jump would have been taken, and PC would be updated to the address of the label, which is 0x200. At that memory location is the first instruction, which would then execute again, creating a loop.</p>
 
